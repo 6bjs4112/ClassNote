@@ -1,0 +1,7 @@
+/* 태그기본값 초기화 */
+*{
+    box-sizing: border-box;
+}
+body,p{ 
+    margin: 0; 
+}
