@@ -52,4 +52,56 @@ main{}
 aside{}
 footer{}
 
+/* ex-1 */
+.ex{
+    width: 1000px;
+    border: 1px solid black;
+    padding: 40px;
 
+    display: flex;
+    align-items: center;
+}
+.ex > p{
+    width: 50%;
+    height: 600px;
+    background-color: #555;
+    color: white;
+}
+.ex div{
+    width: 50%;
+    padding-left: 60px;
+}
+.ex > div > b {font-size: 30px;}
+.ex > div > p {
+    font-size: 16px;
+    margin: 30px 0;
+}
+.ex > div > a {
+    background-color: yellow;
+    border: 1px solid black;
+    padding: 10px 30px;
+    text-decoration: none;
+    color: black;
+    display: inline-block; /*다른 태그 침범 방지*/
+}
+/* ex-2 */
+.ex2{
+    width: 1000px; margin: 100px auto;
+    border: 2px solid brown;
+}
+.ex2 > h2{text-align: center;}
+.ex2 .list{
+    margin: 0; padding: 0; 
+    list-style-type:none;
+    /* ul태그 초기화. 불릿 삭제 */
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-between;
+}
+.ex2 .list .item { width: 30%; }
+.ex2 .list .item > p {}
+.ex2 .list .item > p > img { width: 100%; }
+.ex2 .list .item > div {text-align: center;}
+.ex2 .list .item > div > p {}
+.ex2 .list .item > div > b {}

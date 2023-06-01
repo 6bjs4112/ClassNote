@@ -1,0 +1,96 @@
+@charset "utf-8"; /*최상단에 위치해야함*/
+@import url(./reset.css);
+
+/* utf-8로 하면 깨지지 않음
+한글 주석 
+파일명(영문소문자, 스페이스 X)
+되도록이면 영문소문자로 파일만들기
+Flex.html (X)
+flex .html (X)
+8-flex.html (X)
+
+flex.html (O)
+flex-8.html (O)
+flex_.html (O)
+*/
+article{
+    width: 50%;
+    margin: 100px auto;
+    background-color: #eee;
+    padding: 3%;
+}
+article > div{ white-space: pre-line; }
+/* 에디터에 기입한 그대로 줄바꿈하기 */
+.ex-1{
+    background-color: rgb(167, 19, 19);
+    color: #fff;
+    height: 400px;
+
+    display: flex;
+    justify-content: center;
+}
+.ex-2{
+    background-color: rgb(167, 19, 19);
+    color: #fff;
+
+    display: flex;
+    justify-content: space-between;
+    gap: 10px; /*각 item사이에 여백*/
+}
+.ex-2 >div{
+    background-color: teal;
+    /* flex-shrink: 0;  */
+    /*부모값에 상관없이자식 사이즈 고정, 기본값은 1*/
+    height: 200px; width: 100%;
+}
+.ex-3{
+    background-color: rgb(167, 19, 19);
+    color: #fff;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5%; /*%는 가로 여백만 생김*/
+}
+.ex-3 > div {
+    background-color: teal;
+    width: 200px; height: 200px; 
+    /* 이렇게 쓰면 창 크기 바뀔때마다 한줄에 들어가는 item수가 달라짐 */
+    width: 30%; height: 200px;
+    /* %으로 정하면 한줄당 item수 고정 가능 */
+    margin-bottom: 5%; /*gap이 세로여백 못줘서*/
+}
+.ex-4{
+    background-color: rgb(167, 19, 19);
+    color: #fff;
+
+    display: flex;
+    /* flex-direction: row-reverse; 다바뀜(가로) */
+    /* flex-direction: column-reverse; 다바뀜(세로) */
+    flex-wrap: wrap;
+    gap:20px;
+}
+.ex-4 > div {
+    background-color: teal;
+    width: 45%; height: 200px; 
+}
+/* 임의로 순서들 바꾸기 */
+.ex-4 div:nth-of-type(1){ order: 2;}
+.ex-4 div:nth-of-type(2){ order: 1;}
+.ex-4 div:nth-of-type(3){ order: 3;}
+.ex-4 div:nth-of-type(4){ order: 4;}
+
+
+/* ~flex 필기~
+※부모
+display:flex;
+ㄴ align-items: flex-start | center | flex-end
+ㄴ justify-content: flex-start | center | flex-end
+                    space-between | space-around | space-evenly
+ㄴ flex-wrap: wrap; /*리스트 형태의 콘텐츠
+ㄴ flex-direction: row | colums
+
+※자식
+    너비 ( flex-shrink: 1 | 0 )
+    비율 ( flex-gtow: 1 )
+    순서 변경 ( order:1 )
+*/
