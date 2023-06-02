@@ -94,3 +94,11 @@ display:flex;
     비율 ( flex-gtow: 1 )
     순서 변경 ( order:1 )
 */
+
+/* ~정렬하기~ 
+ㄴ text-align
+ㄴ margin:0 auto;
+ㄴ flex
+    -세로 (align-items)
+    -가로 (justify-content: space-between)
+*/

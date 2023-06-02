@@ -94,7 +94,7 @@ footer{}
     margin: 0; padding: 0; 
     list-style-type:none;
     /* ul태그 초기화. 불릿 삭제 */
-
+/*ul 태그 자식으로는 li만 존재해야함. li안에는 상관 X*/
     display: flex;
     flex-wrap: wrap;
     justify-content:space-between;
