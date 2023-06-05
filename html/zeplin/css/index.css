@@ -1,0 +1,138 @@
+@charset "utf-8";
+@import url("./reset.css");
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0");
+/* html에서 link 태그로 가져올 수도 있고, css에서 호출할수도 있음*/
+
+header{
+    position: absolute;
+    left: 0; top: 30px;
+    width: 100%;
+    z-index: 2; /*우선순위, 위로 보내기*/
+}
+header .head-area{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;/*중앙정렬*/
+}
+.head-area > nav{}
+.head-area > nav > a{
+    color: #fff;
+    font-size: 28px;
+    font-family: 'Material Symbols Outlined';
+    cursor:pointer; /*a href 없어도*/
+}
+.head-area > h1 {}
+.head-area > h1 > a{}
+.head-area > h1 > a >img{}
+
+.head-area .lang{color: #fff; cursor:pointer;}
+.head-area .lang > a::after{
+    content: 'arrow_drop_down';
+    font-size: 15px;
+    font-family: 'Material Symbols Outlined';
+}
+
+main{}
+.spot{ 
+    height: 100vh;
+    overflow: hidden;
+}
+.spot >div{
+    position: absolute;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    /* border: 1px solid red; */
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.spot > div > strong{
+    color: #f5f4a5;
+    font-size: 80px;
+    font-family: Arial-BoldMT;
+}
+.spot > div >a{
+    border: 1px solid #fff;
+    padding: 30px 60px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 0.72px;
+    margin-top: 50px;
+
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+.spot > div >a::before{
+    content: '';
+    position: absolute; 
+    left: 50%; top: 50%;
+    width: 0%; height: 0%;
+    background-color: red;
+    transition: 0.5s;
+    opacity: 0.3;
+    z-index: -1; /*부모에서 -1됨*/
+}
+.spot > div >a:hover::before{ 
+    width: 100%; height: 100%;
+    left: 0; top: 0%;
+}
+/* 커서 올리면 채워지는 */
+.spot > div >a::after{
+    content: 'trending_flat';
+    font-family:'Material Symbols Outlined';
+
+}
+.spot > img{
+    width: 100%; height: 100%;
+    object-fit: cover;
+    /*비율대로 화면에 꽉채우기*/
+}
+
+.service{}
+ul > li{
+    width: 1280px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+}
+ul > li >figure{
+    width: 50%;
+    padding: 0;
+}
+ul > li > figure > img{
+    width: 100%; 
+}
+ul > li >article{
+    width: 45%;
+    padding: 12% 5px;
+}
+ul > li > article > h3{font-size: 32px;}
+ul > li > article > p{padding: 10% 0;}
+ul > li > article > a{    
+    display: flex;
+    align-items: center;
+}
+.service > ul > li > article  >a::after{
+    content: 'navigate_next';
+    font-family: 'Material Symbols Outlined' ;
+}
+/* 짝수 li컨텐츠 뒤집기 */
+.service >ul >li:nth-of-type(2n) > figure{order: 2;}
+.service >ul >li:nth-of-type(2n) > article{order: 1;}
+
+ul > li > article > h3 >hr{
+    /* display: inline-block; */
+    color: black;
+    /* font-size: 10px; */
+}
+
+
+
