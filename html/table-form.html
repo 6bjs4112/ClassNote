@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>table-form</title>
+</head>
+<body>
+    
+    <style>
+        table{
+            border-collapse: collapse;/* 각 칸사이 여백 제거  */
+            width: 1000px; /*밑에 있는 셀들은 알아서 범위 늘어남*/
+            margin: 100px auto;
+        } 
+        th,td{
+            border:1px solid black;
+            padding: 30px; 
+            text-align: center;
+            border-width: 1px 0;
+        }
+        td:nth-of-type(1),
+        td:nth-of-type(3){width: 100px;} /*2번째=중간부분 알아서 범위 조정함*/
+        td:nth-of-type(2){text-align: left;}
+        tr:nth-of-type(2n){background-color: #eee;}
+
+        th{background-color: teal; color: white;}
+        caption{text-align:left; padding: 50px 0; font-size: 2rem;}
+    </style>
+    
+    <table > <!--border="1" cellspacing="50" cellpadding="50" 요즘은 거의 안씀-->
+        <caption>테이블 제목</caption>
+        <thead>
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>날짜</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>01</td>
+                <td>공지사항입니다.</td>
+                <td>2023-06-08</td>
+            </tr>
+            <tr>
+                <td>02</td>
+                <td>수정사항입니다.</td>
+                <td rowspan="2">2023-06-09</td>
+            </tr>
+            <tr>
+                <td>03</td>
+                <td>수정사항입니다.</td>
+                <!-- <td>2023-06-09</td> -->
+            </tr>            
+            <tr>
+                <td>04</td>
+                <td>수정사항입니다.</td>
+                <td>2023-06-10</td>
+            </tr>            
+            <tr>
+                <td>05</td>
+                <td>수정사항입니다.</td>
+                <td>2023-06-11</td>
+            </tr>            
+            <tr>
+                <td>06</td>
+                <td>수정중.</td>
+                <td>2023-06-12</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3">페이징(1,2,3,4...)</td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <table border="5">
+        <tr>
+            <td colspan="2">1,2</td><td rowspan="3">3<br>6<br>9</td>
+        </tr>
+        <tr>
+            <td rowspan="2">4<br>7</td><td>5</td>
+        </tr>
+        <tr>
+            <td>8</td>
+        </tr>
+    </table>
+    <style>table:nth-of-type(2) td{border: 1px solid red}</style>
+
+    <fieldset>
+        <legend>form</legend>
+        <p>method값 get방식은 입력값을 URL뒤쪽으로 넘겨줌</p>
+        <form action="./iframe-video.html" method="get"> <!--submit버튼을 누를시 action이동 -->
+        <!--form태그에는 style명령어를 주지 않는다-->
+            <ul>
+                <li>
+                    <label for="lid">아이디</label>
+                    <input id="lid" 
+                        type="text" name="id" 
+                        placeholder="6문자로 입력!"
+                        required
+                        maxlength="5"
+                        > 
+                    <!-- 
+                    for-id => for를 클릭했을때 id로 넘겨줌
+                    name => 입력된 값을 가지고 action으로 넘어감 
+                    required =>입력하지 않고 submit누르면 피드백이 뜸
+                    maxlength =>글자수 제한
+                    value => 입력하지 않아도 처음에 들어가게 할 수 있음
+                    readonly => 입력이 안됨
+                    -->
+                </li>
+                <li>
+                    <label for="lpw">비밀번호</label>
+                    <input id="lpw" type="password" name="pw">
+                </li>
+                <li>
+                    <label for="">이메일</label>
+                    <input type="email" name="email">
+                </li>
+                <li>
+                    <label for="">연락처</label>
+                    <input type="tel" name="tel">
+                </li>
+                <li>
+                    <label for="">검색</label>
+                    <input type="search" name="search">
+                </li>
+                <li>
+                    <label for="">URL</label>
+                    <input type="url" name="url">
+                </li>
+                <li>
+                    <label for="">숫자</label>
+                    <input type="number" name="number" value="1">
+                </li>
+                <li>
+                    <label for="">날짜</label>
+                    <input type="date" name="date" value="2023-06-08">
+                    <input type="month" name="month">
+                    <input type="time" name="time">
+                    <input type="datetime-local" name="date" value="all">
+                </li>
+                <li>
+                    <label for="">색상</label>
+                    <input type="color" name="color" value="#008080">
+                </li>
+                <li>
+                    <label for="">진행바</label>
+                    <progress value="7" max="100"></progress>
+                </li>
+                <li>
+                    <label for="">파일</label>
+                    <input type="file" name="file">
+                </li>
+                <li>
+                    <label for="">성별</label>
+                    <input type="radio" name="gender">남
+                    <input type="radio" name="gender" checked>여
+                    <input type="radio" name="gender">하나만 선택할 수 있게함
+                    <input type="radio" name="gender">name이 똑같아야 됨
+                    <input type="radio" name="g">똑같지 않으면 다중선택됨
+                </li>
+                <li>
+                    <label for="">설문</label>
+                    <input type="checkbox" name="c1">다중선택 가능함
+                    <input type="checkbox" name="c1">checked 항목으로 미리 눌러둘수 있음
+                    <input type="checkbox" name="c1" checked>독서가좋아요
+                </li>
+                <li>
+                    <label for="">국적</label>
+                    <input list="a">
+                    <datalist id="a">
+                        <option value="South Korea"></option>
+                        <option value="North Korea"></option>
+                        <option value="Greece"></option>
+                    </datalist>
+                </li>
+                <li>
+                    <label for="">지역</label>
+                    <select>
+                        <optgroup label="수도권">
+                            <option>서울</option>
+                            <option>인천</option>
+                            <option selected>경기</option>
+                        </optgroup>
+                        <optgroup label="강원도">
+                            <option>이런식</option>
+                            <option>으로</option>
+                            <option>그룹핑</option>
+                        </optgroup>
+                    </select>
+                </li>
+                <li>
+                    <label>소개</label>
+                    <textarea cols="50" rows="5"></textarea>
+                </li>
+                <li>
+                    <button>결과버튼</button>
+                    <button>주소찾기</button>
+                    <input type="button" value="주소찾기">
+                    <input type="image" src="./img/01.jpg">
+                </li>
+
+                <li>
+                    <input type="submit" value="저장하려면 눌러">
+                    <input type="reset" value="취소하려면 눌러">
+                </li>
+            </ul>
+        </form>
+    </fieldset>
+
+    <style>
+        li{padding: 15px 0; border-bottom: 1px solid #ddd;}
+        label{display: inline-block; width: 130px;}
+    </style>
+
+</body>
+</html>
