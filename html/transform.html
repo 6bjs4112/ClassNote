@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>transform</title>
+</head>
+<body>
+<!-- scale, rotate, skew, translate -->
+    <style>/*기본세팅*/
+        article{
+            width: 100%; height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        img{
+            width: 100%; 
+            vertical-align: middle;
+            transition: .5s;
+        }
+    </style>
+
+    <article>
+        <h2>transform (scale)</h2>
+        <figure class="scale">
+            <img src="./img/04.jpg" alt="">
+        </figure>
+        <style>
+            .scale{
+                width: 400px; overflow: hidden;
+            /* 이렇게하면 부모 영역 안에서만 확대됨 */
+            }
+            .scale:hover img{
+                transform: scale(2);
+                /*기준점 변경 */
+                transform-origin: 100% 100%; /*가로로 100 세로로 100 내려감*/
+                /*right top; 확대 기준점을 우측 상단으로*/
+            }
+        </style>
+    </article>
+
+
+    <article>
+        <h2>transform (rotate)</h2>
+        <figure class="rotate">
+            <img src="./img/04.jpg" alt="">
+        </figure>
+        <style>
+            .rotate{width: 400px; }
+            .rotate img{ transform-origin: right bottom;}
+            .rotate:hover img{
+                transform: rotate(90deg);
+            }
+        </style>
+    </article>
+
+    <article>
+        <h2>transform (rotate, perspective원근)</h2>
+        <figure class="rotate-p">
+            <img src="./img/04.jpg" alt="">
+        </figure>
+        <style>
+            .rotate-p{width: 400px;}
+            .rotate-p:hover img{
+                transform: perspective(300px) rotateY(40deg);
+            }
+        </style>
+    </article>
+
+    <article>
+        <h2>transform (translate)</h2>
+        <figure class="translate">
+            <img src="./img/04.jpg" alt="">
+        </figure>
+        <style>
+            .translate{
+                border: 5px solid red;
+                position: relative;
+                width: 400px; height: 400px;
+            }
+            .translate:hover >img{
+                position: absolute;
+                left: 50%; top: 50%;
+                transform: translate(-50%,-50%);
+            }
+        </style>
+    </article> 
+
+    <article>
+        <h2>transform (translate2)</h2>
+        <figure class="translate2">
+            <img src="./img/04.jpg" alt="">
+        </figure>
+        <style>
+            .translate2{
+                border: 5px solid red;
+                position: relative;
+                width: 400px; height: 400px;
+            }
+            .translate2 >img{
+                box-shadow: 2px 2px 5px rgb(0, 0, 0, 0.4); 
+                transition: .5s cubic-bezier(.45,.16,.0,1.69);
+            }
+            .translate2 >img:hover{
+                transform: translate(-20px,-20px); 
+                box-shadow: 20px 20px 20px rgb(0, 0, 0, 0.4); 
+            }
+        </style>
+    </article> 
+
+    <article>
+        <h2>transform (skew)</h2>
+        <figure class="skew">
+            <img src="./img/04.jpg" alt="">
+        </figure>
+        <style>
+            .skew{width: 400px;
+                position: relative;
+            }
+            .skew::after{
+                content: '';
+                position: absolute;
+                left: 0; bottom: 0;
+                background-color: rgba(0, 0, 0, 0.2);
+                width: 100%; height: 50%;
+                transform: skew(64deg);
+                transform-origin: 100%, 100%;
+                transition: .5s;
+                z-index: -1;
+            }
+            .skew img{
+                transform: skew(45deg);
+                transform-origin: 100%, 100%;
+            }
+            .skew:hover img, .skew:hover::after{
+                transform: skew(0deg);
+            }
+        </style>
+    </article>
+
+    <article class="a_ani">
+        <h1>Animation</h1>
+        <div class="ani">
+            <p>HTML,CSS,JS</p>
+            <b>hou</b>
+        </div>
+    </article>
+    <style>
+        .a_ani{margin: 500px 0;;}
+        .ani{overflow: hidden; } /*밑으로 내린 글씨 가리기*/
+        .ani p{
+            margin: 0;
+            transform: translateY(100%);
+            font-size: 5rem;
+            animation: txt 1s cubic-bezier(.45,.16,.0,1.69) forwards;
+        }
+        .ani p::after{
+            content: '';
+            border-bottom:3px solid black;
+            display: block; margin: 0 auto;
+            width: 0%;
+            animation: line 0.5s 0.75s forwards;
+        }
+
+        @keyframes txt {
+            0%{transform: translateY(100%);}
+            100%{transform: translateY(0%);}
+        }
+        @keyframes line{
+            0%{width: 0%;}
+            100%{width: 100%;}
+        }
+        .ani b{
+            margin: 0;
+            animation: color 1s forwards;
+        }
+        @keyframes color{
+            0%{color: black;}
+            100%{color: aqua;}
+        }
+    </style>
+
+</body>
+</html>

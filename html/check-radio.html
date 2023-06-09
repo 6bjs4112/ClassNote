@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>check-radio</title>
+</head>
+<body>
+    
+    <article><!--체크박스-->
+        <h2>checkbox 활용</h2>
+        <div class="check">
+            <input id="c" type="checkbox" name="check">
+            <label for="c"><span></span></label>
+        </div>
+    </article>
+    <style>
+        article{width: 50%; margin: 100px auto;}
+        .check label{
+            display: block;
+            width: 60px; height:26px;
+            background-color: #aaa; 
+            border-radius: 26px;
+        }
+        /* .check label:active{ background-color: green;}클릭중일때 */
+        
+        /* " + "=형제요소 중 바로 밑 하나에만 */
+        .check input:checked + label{
+            background-color: teal;
+        }
+        .check input{ /*체크박스 숨기기*/
+            display: none; /*영역까지 삭제*/
+            /* opacity: 0; */
+            /* visibility: hidden; */
+            /* 밑 두개는 투명일뿐 영역은 차지함 */
+        }
+        .check > label > span{ /*스위치 버튼 만들기*/
+            display: block;
+            width: 22px; height:22px;
+            background-color: white; 
+            border-radius: 22px;
+            transform: translate(2px,2px);
+            transition: .5s;
+        }
+        .check input:checked + label > span{
+            transform: translate(36px,2px);
+            transition: 0.5s;
+        }
+    </style>
+
+    <article><!--라디오-->
+        <h2>radio 활용</h2>
+        <div class="radio">
+            <input id="d" type="radio" name="silde">
+            <input id="e" type="radio" name="silde">
+            <input id="f" type="radio" name="silde">
+
+            <label for="d">선택1</label>
+            <label for="e">선택2</label>
+            <label for="f">선택3</label>
+            <div>
+                <figure>
+                    <img src="./img/01.jpg">
+                    <img src="./img/02.jpg">
+                    <img src="./img/03.jpg">
+                </figure>
+            </div>
+        </div>
+    </article>
+    <style>
+        .radio label{
+            display: inline-block;
+            background-color: #aaa;
+            padding: 10px 20px;
+            
+        }
+        .radio div{ 
+            width: 490px; 
+            overflow: hidden;
+        }
+        .radio div figure{display: flex; transition: 1s; margin: 0;}
+
+        .radio div img{ width: 100%; }
+
+        /* " ~ "= 형제요소들 */
+        .radio input:nth-of-type(1):checked ~ div > figure{
+            transform: translateX(0%);
+        }
+        .radio input:nth-of-type(2):checked ~ div > figure{
+            transform: translateX(-100%);
+        }
+        .radio input:nth-of-type(3):checked ~ div > figure{
+            transform: translateX(-200%);
+        }
+        .radio input{display: none;}
+    </style>
+
+    <article> <!--로그인 페이지-->
+        <h2> login</h2>
+        <div class="login">
+            <form action="">
+                <p>
+                    <input type="text" name="id" placeholder="아이디">
+                    <br>
+                    <input type="password" name="pw"  placeholder="비밀번호">
+                </p>
+                
+                <p>
+                    <input type="checkbox" id="ch">
+                    <label for="ch">로그인 상태 유지</label>
+                </p>
+
+                <p>
+                    <input type="submit" value="로그인">
+                </p>
+            </form>
+
+        </div>
+        <style>
+            *{ box-sizing: border-box;}
+            .login{
+                width: 360px;
+                border: 3px solid black;
+                border-radius: 10px;
+                padding: 5%;
+            }
+
+            .login form p input{
+                width: 100%;
+                margin-top: 5px;
+                padding: 5px 5px;
+                border-radius: 5px;
+                outline:none;
+            }
+            .login form p input::placeholder{color:blue;}
+
+            .login form p label{
+                display: flex;
+                align-items: center;
+                position:relative;
+            }
+            .login form p label::before{
+                content:'';
+                display: inline-block;
+                width: 35px; height:20px;
+                background-color: rgb(238, 48, 48);
+                border-radius: 26px;
+            }
+            .login form p label::after{
+                content:'';              
+                width: 16px; height: 16px;
+                position:absolute;
+                background-color: #fff;
+                border-radius: 18px; 
+                margin-left: 2px;
+                transition: .5s;
+            }
+            .login form p:nth-of-type(2) input{display: none;}
+            .login form p input:checked + label::before{
+                background-color: rgb(18, 168, 18);
+            }
+            .login form p input:checked + label::after{ 
+                transform: translate(14px, 0px); 
+                transition: .5s;
+            }
+            .login form p:nth-of-type(3) input{
+                background-color: black;
+                color: white;
+                padding: 7px;
+                border-radius: 10px;
+                border: none;
+            }
+
+            
+        </style>
+    </article>
+
+</body>
+</html>
