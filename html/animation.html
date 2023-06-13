@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation</title>
+</head>
+<body>
+    <style>
+        article{border: 5px solid dodgerblue; color: navy; margin-bottom: 20px; }
+    </style>
+
+    <article>
+        <h2>Test Animation- duration, interation-count</h2>
+        <div class="ani-1">
+            <p>Test animation Test animation Test animation</p>
+        </div>
+        <style>
+            .ani-1{ overflow: hidden;}
+            .ani-1 > p{
+                margin: 0;
+                font-size: 200px;
+                white-space: nowrap; 
+                /*부모의 영역을 넘어서서 강제 한줄처리*/
+                animation-name: ani-1;
+                animation-duration: 2s;
+                animation-iteration-count: infinite;
+                animation-timing-function: linear;
+            }
+            @keyframes ani-1{
+                0%{transform: translateX(0%);}
+                100%{transform: translateX(-73%);}
+            }
+        </style>
+    </article>
+
+    <article>
+        <h2>Test Animation- duration, delay, forwards</h2>
+        <div class="ani-2">
+            <p>
+                <span>T</span>
+                <span>E</span>
+                <span>X</span>
+                <span>T</span>
+            </p>
+        </div>
+        <style>
+            .ani-2{}
+            .ani-2 > p{overflow: hidden;}
+            .ani-2 > p > span{
+                display: inline-block;
+                font-size: 10rem;
+                transform: translateY(100%);
+                animation-name: ani-2;
+                animation-duration: 1s;
+                animation-fill-mode: forwards;
+            }
+            .ani-2 > p > span:nth-of-type(1){}
+            .ani-2 > p > span:nth-of-type(2){animation-delay: .5s;}
+            .ani-2 > p > span:nth-of-type(3){animation-delay: 1s;}
+            .ani-2 > p > span:nth-of-type(4){animation-delay: 1.5s;}
+            
+            @keyframes ani-2 {
+                0%{transform: translateY(100%);/*기존 애니메이션 상태값과 같아서 생략가능*/}
+                100%{transform: translateY(0%);}
+            }
+
+        </style>
+    </article>
+
+    <article>
+        <h2>Test Animation- svg</h2>
+        <div class="ani-3">
+            <svg xmlns="http://www.w3.org/2000/svg" 
+            height="200" width="200"
+            viewBox="0 -960 960 960" >
+            <path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80ZM240-240l240-240v-340q-142 0-241 98.812Q140-622.375 140-480q0 68 26 130t74 110Z"/>
+            </svg>
+
+            <svg width="1000" height="600">
+                <rect x="0" y="0" width="200" height="200" fill="red"></rect>
+                <rect x="250" y="0" rx="30" width="200" height="200"" fill="green"></rect>
+                <circle cx="600" cy="100" r="100" fill="blue"></circle>
+                <g> <!--그룹 태그-->
+                    <line x1="0" y1="250" x2="200" y2="250" stroke="red" stroke-width="20"></line>
+                    <line x1="200" y1="250" x2="100" y2="350" stroke="green" stroke-width="20"></line>
+                    <line x1="100" y1="350" x2="0" y2="250" stroke="blue" stroke-width="20"></line>
+                </g>
+                <image x="250" y="250" width="200" href="./img/01.jpg"></image>
+                <text x="500" y="300" font-size="100" stroke="red" fill="yellow">SVG</text>
+            </svg>
+
+            <svg width="800" height="600">
+                <defs> <!--해당 영역안에 있는것 투명화-->
+                    <path id="text-line" d="M100,300 Q200,200 350,300 Q550,450 700,300"></path>
+                </defs>
+                <text y="60%" font-size="20">
+                    <textPath xlink:href="#text-line">
+                        textPath를 활용한 곡선 따라다니는 문자 만들기(*곡선은 안보이게 처리함)
+                    </textPath>
+                </text>
+            </svg>
+
+            <svg width="700" height="400">
+                <mask id="txt-mask">
+                    <text x="100" y="200" font-size="100" font-weight="700" fill="white">
+                        SVG MASK
+                    </text>
+                </mask>
+                <image mask="url(#txt-mask)" x="100" y="0" href="./img/0.jpg"></image>
+            </svg>
+        </div>
+        <style>
+            .ani-3{  }
+            .ani-3 > svg > path{
+                fill: transparent; /*면 색=투명처리*/
+                stroke: navy; /*선 색*/
+                stroke-width: 30px;
+                stroke-dasharray: 3000px;
+                stroke-dashoffset: 3000px;
+
+                animation: svg 5s forwards infinite;
+            }
+            @keyframes svg{
+                50%{stroke-dashoffset: 0px;}
+                100%{
+                    fill: dodgerblue;
+                    stroke-dashoffset: 0px; /*없으면 다시 돌아감*/
+                    stroke-width: 0px;
+                }
+            }
+        </style>
+    </article>
+
+    <article>
+        <h2>ex</h2>
+        <div class="ex">
+            <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="200" height="200">
+                <path d="M10,19c0-1.1,.9-2,2-2s2,.9,2,2-.9,2-2,2-2-.9-2-2Zm13.68-9.46c.41-.38,.43-1.01,.05-1.41-3.02-3.25-7.3-5.12-11.73-5.12S3.29,4.87,.27,8.12c-.38,.41-.35,1.04,.05,1.41,.4,.38,1.04,.35,1.41-.05,2.64-2.85,6.38-4.48,10.27-4.48s7.62,1.63,10.27,4.48c.2,.21,.46,.32,.73,.32,.24,0,.49-.09,.68-.27Zm-5.01,4.81c.41-.38,.43-1.01,.05-1.41-1.73-1.87-4.18-2.94-6.72-2.94s-4.99,1.07-6.72,2.94c-.38,.4-.35,1.04,.05,1.41,.4,.38,1.04,.35,1.41-.05,1.35-1.46,3.27-2.29,5.26-2.29s3.9,.84,5.26,2.29c.2,.21,.46,.32,.73,.32,.24,0,.49-.09,.68-.27Z"/>
+            </svg>
+        </div>
+        <style>
+            .ex{}
+            .ex > svg > path {
+                fill: transparent;
+                stroke: black;
+                stroke-width: 0.1px; 
+                stroke-dasharray: 60px;
+                stroke-dashoffset: 60px;
+                animation: ex 1.5s forwards infinite;
+                
+                transform-origin: 50% 83%;
+            }            
+            @keyframes ex {
+                0%{stroke-dashoffset: 60px;}
+                25%{
+                    
+                    stroke-dashoffset: 0px;
+                    transform: rotate(-25deg);
+                }
+                50%{
+                    stroke-dashoffset: 0px;
+                    transform: rotate(390deg);
+                }
+                75%{
+                    stroke-dashoffset: 0px;
+                    transform: rotate(340deg);
+                }
+                100%{
+                    fill:dodgerblue;
+                    stroke-dashoffset: 60px;
+                    transform: rotate(360deg);
+                }
+            }
+    
+        </style>
+    </article>
+</body>
+</html>
