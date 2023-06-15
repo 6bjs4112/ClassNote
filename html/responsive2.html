@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>반응형2</title>
+</head>
+<body>
+
+    <header> 메뉴 </header>
+
+    <!-- 화면 크기따라 사진 바꾸기 -->
+    <picture>
+        <source srcset="./img/04.jpg" media="(max-width:480px)">
+        <source srcset="./img/02.jpg" media="(max-width:768px)">
+        <img src="./img/01.jpg">
+    </picture>
+
+    <style>
+        @media print { /*프린트 할때 {안에 있는 것}은 인쇄되지 않게*/
+            header{display: none;}
+            /* picture{display: none;} */
+        }
+        @media (orientation: landscape) {
+            body{background-color: teal;}
+        }
+        @media (orientation: portrait) {
+            body{background-color: blue;}
+        }
+        @media (hover: none) {
+            picture:hover{border: 5px solid yellow;}
+        }
+        @media not screen and (max-width: 480px){
+            /*모바일 사이즈가 되면 폰트가 작아짐*/
+            body{font-size: 5rem;}
+            /* 
+            not이 한묶음
+            screen and (max-width: 480px)가 한묶음임
+            */
+        }
+        @media (min-width: 768px), (max-width: 480px){
+            /*모바일 사이즈가 되면 폰트가 작아짐*/
+            body{font-size: 5rem;}
+        }
+    </style>
+
+</body>
+</html>

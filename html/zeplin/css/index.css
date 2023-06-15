@@ -238,7 +238,6 @@ footer{
         display: block;    
     }
     .gray > ul >li > figure > p> img{
-        width: 100%; height: 100%;
-        object-fit: contain;
+        overflow: hidden;
     }
 }
