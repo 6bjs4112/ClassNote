@@ -1,3 +1,6 @@
+@import "_mixin";
+@import "_reset";
+//위에 두놈 순서바꾸면 에러남=> mixin에있는요소롤 reset에서 써서
 *{
     margin: 0; padding: 0;
     font-family: 'Inter', sans-serif;
@@ -6,36 +9,9 @@
 }
 ul,li{list-style-type: none; padding: 0; margin: 0;}
 
-@import "_reset";
-@import "_mixin";
 
 header{
-    width: 100%;
-    
-    .head-area{
-        width: 75%; margin: 3% auto;
-        @include flex();
-
-        .head-l{
-            width: 40%;
-            @include flex(space-around, center);
-        }
-        // , 안쓰고 @extend로도 가능
-        .head-r{ @extend .head-l;  }
-        a{
-            font-weight: 300;
-            text-decoration: none;
-            color: #000;
-            &:hover{font-weight:700;}
-
-            &:hover::after{
-                display: flex;
-                content: '';
-                border-top: 2px solid #D91226;   
-            }
-        }
-        .logo:hover::after{ display:none; }
-    }
+    //_reset파일로 옮겼음
 }
 
 main{
@@ -135,7 +111,7 @@ main{
                         
                             p{
                                 margin: 10px 0;
-                                font-size: 1.8vh;
+                                font-size: 1.5vh;
                                 color: #6E6E6E;
                             }
                         }
@@ -145,4 +121,13 @@ main{
         }
     }
 }
+
+@import "_media", "_m-self";
+
+
+
+/*6/19필기참고
+1. 해상도 문서 (디바이스별 사이즈, mixin, media) =>_media.scss
+2. 각 페이지별 반응형 스타일 => _m-self.scss
+*/
 

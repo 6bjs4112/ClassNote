@@ -1,17 +1,4 @@
-* {
-  margin: 0;
-  padding: 0;
-  font-family: "Inter", sans-serif;
-  font-size: 2vh;
-  font-weight: 300;
-}
-
-ul, li {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
+@charset "UTF-8";
 html, body {
   margin: 0;
 }
@@ -53,6 +40,28 @@ header .head-area a:hover::after {
 }
 header .head-area .logo:hover::after {
   display: none;
+}
+
+/*
+common.scss
+로 빼도 됨
+다중페이지 공통 스타일
+푸터, 버튼, 색상
+콘텐츠(컴포넌트)
+대충 계속 반복되는 요소들
+*/
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+  font-size: 2vh;
+  font-weight: 300;
+}
+
+ul, li {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
 main .mem {
@@ -174,6 +183,26 @@ main .service02 .box .icon li figure figcaption b {
 }
 main .service02 .box .icon li figure figcaption p {
   margin: 10px 0;
-  font-size: 1.8vh;
+  font-size: 1.5vh;
   color: #6E6E6E;
-}/*# sourceMappingURL=self.css.map */
+}
+
+@media (max-width:1279px) {
+  body {
+    background-color: green;
+  }
+}
+@media (max-width:767px) {
+  body {
+    background-color: blue;
+  }
+}
+@media (max-width:480px) {
+  body {
+    background-color: red;
+  }
+}
+/*6/19필기참고
+1. 해상도 문서 (디바이스별 사이즈, mixin, media) =>_media.scss
+2. 각 페이지별 반응형 스타일 => _m-self.scss
+*//*# sourceMappingURL=self.css.map */
