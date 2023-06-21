@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>data</title>
+    <!-- <script src="./스크립트문서.js"></script>/ 이렇게하면 에러남
+    <script defer src="./스크립트문서.js"></script> defer 넣어주면 ㅇㅋ -->
+</head>
+<body>
+    <div class="div">선택자</div>
+    <script>
+
+    let element = document.querySelector('div');
+    
+    element.innerText = 1000;
+    element.style = 'color:red';
+    element.className = 'test';
+
+    console.log(element.innerText);//콘솔창에 출력하기
+
+    //기능 주기
+    element.onclick = function(){
+        element.innerText = 2000;
+    }
+
+    let num = 1000;
+    element.onclick = function(){
+        element.innerText = num * 2;
+    }
+    </script>
+
+    <script>
+        //호이스팅(x), 네이밍 중복(x), 스코프 영역에서 사용
+        //호이스팅(Hoisting)이란 함수 내의 변수 및 함수 선언을 각 유효 범위의 최상단으로 끌어 올려주는 JS의 독특한 특징이다.
+
+        // 스코프 
+        // =>{지역local 변수=> 중괄호 안에서 선언}
+        // =>{전역global 변수=> 스크립트 상단에서 선언 (중괄호 밖)}
+    let a;       
+        a = '100';  
+        a += 100;
+    let b ='홍길동';
+    console.log( b+'의 포인트는 ' + a + '입니다.'); 
+    console.log( `${b}의 포인트는 ${a}입니다.` ); 
+
+    </script>
+</body>
+</html>
