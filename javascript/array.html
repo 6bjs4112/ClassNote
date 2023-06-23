@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배열 array</title>
+</head>
+<body>
+    <script>//배열
+        let a = new Array();
+        let b = [];
+        a.push(10);
+        a.push(50);
+        a.push(800);
+        //값 수정
+        a[2]=1000; 
+        console.log(a)
+        console.log(a[2])
+        console.log(a.length)
+
+        a.forEach(function( ){
+           //명령 입력
+        });
+        a.forEach(function(v,k,arr){
+            console.log(`v=${v}, k=${k}, arr=${arr}`)
+        });
+
+        let total = 0;
+        a.forEach(function(v,k){
+            total += v;
+            if(v==50){
+                console.log(`값 ${v}의 키는 ${k}이다`)
+            }
+        });
+        console.log(total);
+    </script>
+
+<!-- 쿼리셀렉터 -->
+    <dl>
+        <!-- <div>
+            <dt>이름</dt>
+            <dd></dd>
+        </div>
+        <div>
+            <dt>이름</dt>
+            <dd></dd>
+        </div>
+        <div>
+            <dt>이름</dt>
+            <dd></dd>
+        </div> -->
+    </dl>
+    <script>//쿼리셀렉터
+        let name = ['김승일', '소정민', '배주연'] ;
+        const elDd = document.querySelector('dl');
+
+        // console.log(elDd); //노드 리스트. 배열과 비슷한 형식을 하고있음
+        // console.log(name); //배열임
+
+        // // elDd[0].innerText = name[0];
+        // // elDd[1].innerText = name[1];
+        // // elDd[2].innerText = name[2];
+
+        // elDd.forEach(function(v,k){
+        //     elDd[k].innerText = name[k];
+        // });
+        let tag = ''; //빈공간
+        name.forEach(function(v,k){
+            if(v != '배주연'){
+                tag +=`
+                    <div>
+                        <dt>이름</dt>
+                        <dd>${v}</dd>
+                    </div>
+                `;
+            }
+        });
+        elDd.innerHTML =tag;
+
+    </script>
+
+<!-- 으아아아 -->
+    <div class="list"></div>
+    <script>//으아아아
+        //엘리먼트(.list클래스) 요소안에 이미지를 넣어보세요
+        // 배열 photo를 이용하고 forEach를 활용하세요
+        // 사용명령 =>querySelector, forEach, innerHTML
+
+        let photo = ['./img/01.jpg','./img/02.jpg','./img/03.jpg'];
+        const elDi = document.querySelector('.list');
+        console.log(elDi);
+        photo.forEach(function(v,k){
+            elDi.innerHTML +=
+            ` <img src="${v}"> `;
+        });
+    </script>
+</body>
+</html>

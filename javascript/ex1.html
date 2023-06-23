@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>점검하는 문서래요</title>
+</head>
+<body>
+    <script>// total, avg 등급내기
+        let html=90, css=100, js=10;
+        
+    // total이 200이상이면 합격/불합격
+        let total = html + css + js;
+        
+        if(total>=200){
+            console.log(`총 ${total}점,합격 `);
+        }else {
+            console.log(`총 ${total}점,불합격 `);
+        }
+    //평균 90이상 A, 80이상 90미만 B, 80미만 C
+        let avg = total/3 ;
+        if(avg>=90){
+            console.log(`평균 ${Math.round(avg)}점, A등급 입니다. `);
+        }else if(avg>=80 && avg<90){
+            console.log(`평균 ${Math.round(avg)}점, B등급 입니다. `);
+        }else if(avg<80){
+            console.log(`평균 ${Math.round(avg)}점, C등급 입니다. `);
+        }
+    </script>
+    
+    <script>//콘솔명령을 한번만 사용해서 출력해보기
+        let age = prompt('당신의 나이는 몇 짤?');
+        let msg = null;
+        if(age >=19){
+            msg='어서오세요~ 환영합니다^^';
+        }else{ 
+            msg='이놈!!';
+        }
+        console.log(msg);
+    </script>
+</body>
+</html>
