@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배열-for each문</title>
+</head>
+<body>
+    
+    <!-- 출석부에 이름 추가하기 -->
+    <article class="at">
+        <h2> 출석부 (<code></code>)</h2>
+        <p> 
+            <input type="text"> 
+            <button> 저장 </button>
+        </p>
+        <ul>
+            <li></li>
+        </ul>
+    </article>
+    <script>
+        const elText = document.querySelector('.at input');
+              elButton = document.querySelector('.at button');
+              elUl = document.querySelector('.at ul');
+              elLen = document.querySelector('.at code');
+        
+        //버튼 누르면 입력받은 이름을 목록에 추가하기
+
+        let data =[];
+        
+        elButton.onclick = function(){
+            if(elText.value != ''){//입력창 공백이면 저장안되게끔
+            data.push(elText.value);
+            
+            let ulTag='';
+            data.forEach(function(name){
+                ulTag += `<li>${name}</li>`;
+            })
+            elUl.innerHTML = ulTag;
+            elLen.innerText = data.length;
+            }//end if
+        }
+
+    </script>
+
+    <!-- 클릭시 사진 추가하기 -->
+    <article class="photo">
+        <h2>이미지 등록 <button>추가</button></h2>
+        <ul>
+            <!-- <img src="./img/01.jpg" > -->
+        </ul>
+    </article>
+    <!--  
+        1. 버튼 클릭=> ul태그안에 이미지를 출력함
+        2. 등록할 값이 없을 경우에는 콘솔창에 메세지를 출력('등록할 이미지가 없습니다.') 
+    -->
+    <script>
+        const elPhotoBtn = document.querySelector('.photo button');
+              elPhotoUl = document.querySelector('.photo ul');
+
+        let imgs = ['./img/01.jpg','./img/02.jpg','./img/03.jpg'];
+
+        let photoTag, photoNum =0;
+
+        elPhotoBtn.onclick = function(){
+            if(photoNum < imgs.length){//숫자 대신 배열의 길이만큼
+            photoTag =`<li><img src='${imgs[photoNum++]}'></li>`;
+            elPhotoUl.innerHTML += photoTag;
+            }
+            else console.log('등록할 이미지가 없습니다.'); 
+            
+        //3. 추가된 이미지를 클릭했을때 뭐 나오게
+            photoEvent();//원래 밑에 그룹이 이 자리에 있어야 실행됬음
+        }//end onclick 
+
+        //이런식으로 @mixin마냥 만들어 쓸 수 있음
+        function photoEvent(){
+            const elPhotoLi = document.querySelectorAll('.photo li');
+            elPhotoLi.forEach(function(v,k){
+                elPhotoLi[k].onclick = function(){
+                    alert(`귀여운 ${k+1}번째 멍멍이 사진`);
+                    console.log(event.target);//클릭한 사진의 태그가 콘솔창에 뜸
+                };
+            })//end forEach
+        }
+    </script>
+    <style>
+        ul,li{list-style-type: none; margin: 0; padding: 0;}
+    </style>
+
+</body>
+</html>

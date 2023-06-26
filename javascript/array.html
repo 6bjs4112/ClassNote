@@ -80,16 +80,15 @@
 
     </script>
 
-<!-- 으아아아 -->
+<!-- 으아아아 사진넣기-->
     <div class="list"></div>
-    <script>//으아아아
+    <script>//사진넣기
         //엘리먼트(.list클래스) 요소안에 이미지를 넣어보세요
         // 배열 photo를 이용하고 forEach를 활용하세요
         // 사용명령 =>querySelector, forEach, innerHTML
 
         let photo = ['./img/01.jpg','./img/02.jpg','./img/03.jpg'];
         const elDi = document.querySelector('.list');
-        console.log(elDi);
         photo.forEach(function(v,k){
             elDi.innerHTML +=
             ` <img src="${v}"> `;
