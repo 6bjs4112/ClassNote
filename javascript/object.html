@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>오브젝트</title>
+</head>
+<body>
+<!-- 밑에 방해되서 임시 주석처리
+    <script>//설명
+        let obj = {html: 70, css: 80, js: 50};
+        
+        //오브젝트의 값을 꺼내다 쓰는 방법
+        obj['html'] //70
+        obj.html //70
+
+        for(const key in obj){
+            console.log(key); //오브젝트의 속성
+            console.log(obj[key]); //오브젝트의 값
+            console.log(`${key} : ${obj[key]}`); //오브젝트의 속성: 값
+            console.log(`<div>${key} = ${obj[key]}<div>`);
+        }
+
+        console.log(
+            obj, //위의 중괄호가 뜸
+            obj.html + obj.css + obj.js
+            //total 값 200                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+        );
+
+        let obj2 = {
+            html: 70,
+            css: 80,
+            js: 50,
+            total : function(){
+                return (this.html + this.css + this.js)
+            }
+        };
+        console.log(obj2.total);//이렇게 하면 함수 전체가 뜸
+        console.log(obj2.total());//이렇게 해야 함수 결과값 나옴
+    </script>
+
+    
+    <script>//data123 생활용품 캠핑용품
+        let data = {
+            imageName_1 : {
+                size:[200,300], 
+                name: '이미지01',
+                url: 'https://naver.com'
+            }
+        }
+        console.log(
+            '이 밑으로 data임',
+            data.imageName_1.size,
+            data.imageName_1.size[0],
+            data.imageName_1.name,
+            data.imageName_1.url,
+            );
+        
+        // 문제
+        let data2 = [
+            {name: 'p01', code: 12354},
+            {name: 'p02', code: 12354},
+            {name: 'p03', code: 12354}
+        ]
+        console.log(
+            data2[1].name
+        );
+
+        let data3 = {
+            생활용품: [
+                {
+                    code: 520734,
+                    title: '알뜨리 다용도 압축봉 3', 
+                    price: 14960, 
+                    color: 'white',
+                    thumb: 'images/a100045.jpg',
+                    size: '80-150cm',
+                },
+                {
+                    code: 520734,
+                    title: '알뜨리 다용도 압축봉 5', 
+                    price: 14960, 
+                    color: 'white',
+                    thumb: '이거찾아야됨images/a100045.jpg',
+                    size: '80-150cm',
+                },
+                {
+                    code: 520734,
+                    title: '알뜨리 다용도 압축봉 7', 
+                    price: 14960, 
+                    color: 'white',
+                    thumb: 'images/a100045.jpg',
+                    size: '80-150cm',
+                },
+            ],
+            캠핑용품:[
+                {
+                    code: 520734,
+                    title: '그늘막 텐트3', 
+                    price: 14960, 
+                    color: 'white',
+                    thumb: 'images/a100045.jpg',
+                    size: '80-150cm',
+                },
+                {
+                    code: 520734,
+                    title: '그늘막 텐트 5', 
+                    price: 14960, 
+                    color: 'white',
+                    thumb: 'images/a100045.jpg',
+                    size: '80-150cm'
+                },
+                {
+                    code: 520734,
+                    title: '그늘막 텐트 7', 
+                    price: 14960, 
+                    color: 'white',
+                    thumb: 'images/a100045.jpg',
+                    size: '80-150cm'
+                }
+            ]
+        }
+        console.log(data3.생활용품[1].thumb); //이걸찾아야됨
+        
+        //각 물품 이름만 출력하기
+        data3.생활용품.forEach(function(obj,key){
+            console.log(obj.title);
+        });
+        //여기에 캠핑용품 추가하기
+        for(const key in data3){
+            // console.log(key);// key=> 생활용품, 캠핑용품
+            // console.log(data3[key]);
+            // if(key == '캠핑용품'){ //이렇게 하면 상품별 탭에서 골라 보여주기 가능
+            //     data3[key].forEach(function(obj,key){
+            //         console.log(obj.title);
+            //         });
+            //     }
+            data3[key].forEach(function(obj,key){
+                    console.log(obj.title);
+                });
+        }
+    </script>
+-->
+    <!-- 버튼 누를때마다 아래 내용 바뀌게 -->
+    <article>
+        <h2>포트폴리오</h2>
+        <p>
+            <!-- <button>디자인</button>
+            <button>퍼블리싱</button>
+            <button>프론트엔드</button> -->
+        </p>
+        <div class="list">
+            <!-- <a href="#">
+                <figure>
+                    <p><img src="./img/03.jpg" width="300"></p>
+                    <figcaption>
+                        작품명: 삼성디자인 시안
+                        제작기간: 5일
+                        요약설명: 사용성이 편리하고 심플한 컨셉
+                    </figcaption>
+                </figure>
+            </a> -->
+        </div>
+
+        <script>
+            const elList = document.querySelector('.list'); 
+            const elP = document.querySelector('article > p'); 
+
+            let artData = {
+                디자인:[
+                    {
+                        작품명:'삼성 디자인 시안',
+                        제작기간:'5일', 
+                        요약설명:'삼성 디자인 시안 설명.....',
+                        이미지: './img/01.jpg',
+                        링크: 'https://naver.com'
+                    },
+                    {
+                        작품명:'카카오 디자인 시안',
+                        제작기간:'5일', 
+                        요약설명:'카카오 디자인 시안 설명.....',
+                        이미지: './img/02.jpg',
+                        링크: 'https://naver.com'
+                    }
+                ],
+                퍼블리셔:[
+                {
+                        작품명:'삼성코딩물',
+                        제작기간:'5일', 
+                        요약설명:'삼성코딩물 설명.....',
+                        이미지: './img/03.jpg',
+                        링크: 'https://naver.com'
+                    }
+                ],
+                프론트엔드:[
+                    {
+                        작품명:'모바일 어플 1',
+                        제작기간:'5일', 
+                        요약설명:'모바일 어플 1 설명.....',
+                        이미지: './img/04.jpg',
+                        링크: 'https://naver.com'
+                    },
+                    {
+                        작품명:'모바일 어플 2',
+                        제작기간:'5일', 
+                        요약설명:'모바일 어플 2 설명.....',
+                        이미지: './img/05.jpg',
+                        링크: 'https://naver.com'
+                    },
+                ]
+            };
+            
+            //버튼 추가
+            for(const k in artData){
+                elP.innerHTML += `<button>${k}</button>`;
+            }
+            const elButton = document.querySelectorAll('button'); 
+            
+            //버튼 클릭시 내용 출력
+            elButton.forEach(function(button,k){
+                button.onclick = function(){
+                    // console.log(this.innerText);
+                    let tag='';
+                    let key = this.innerText;
+                    artData[key].forEach(function(obj,k){
+                        // console.log(obj.작품명);
+                        tag += 
+                        `
+                        <a href="#">
+                            <figure>
+                                <p><img src="${obj.이미지}" width="300"></p>
+                                <figcaption>
+                                    작품명: ${obj.작품명}
+                                    제작기간: ${obj.제작기간}
+                                    요약설명: ${obj.요약설명}
+                                </figcaption>
+                            </figure>
+                        </a>
+                        `;
+                        elList.innerHTML = tag;
+                    });
+                } 
+            });
+
+            
+        </script>
+    </article>
+
+</body>
+</html>
