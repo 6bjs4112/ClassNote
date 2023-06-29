@@ -7,7 +7,7 @@
     <title>오브젝트</title>
 </head>
 <body>
-<!-- 밑에 방해되서 임시 주석처리
+
     <script>//설명
         let obj = {html: 70, css: 80, js: 50};
         
@@ -141,7 +141,7 @@
                 });
         }
     </script>
--->
+
     <!-- 버튼 누를때마다 아래 내용 바뀌게 -->
     <article>
         <h2>포트폴리오</h2>
@@ -210,7 +210,6 @@
                     },
                 ]
             };
-            
             //버튼 추가
             for(const k in artData){
                 elP.innerHTML += `<button>${k}</button>`;
@@ -221,11 +220,35 @@
             elButton.forEach(function(button,k){
                 button.onclick = function(){
                     // console.log(this.innerText);
-                    let tag='';
                     let key = this.innerText;
-                    artData[key].forEach(function(obj,k){
+                    //함수사용
+                    printFun(key);
+                    //밑 함수로 옮김~ 원래는 onclick안에 있었음
+                    // artData[key].forEach(function(obj){
+                    //     // console.log(obj.작품명);
+                    //     tag += 
+                    //     `
+                    //     <a href="#">
+                    //         <figure>
+                    //             <p><img src="${obj.이미지}" width="300"></p>
+                    //             <figcaption>
+                    //                 작품명: ${obj.작품명}
+                    //                 제작기간: ${obj.제작기간}
+                    //                 요약설명: ${obj.요약설명}
+                    //             </figcaption>
+                    //         </figure>
+                    //     </a>
+                    //     `;
+                    //     elList.innerHTML = tag;
+                    // });
+                } 
+            });
+            //내용이 반복되는걸 줄이기 위해서 함수생성
+            let printFun = function(key){
+                    elList.innerHTML =''; //값 초기화하기. 안하면 사진이 계속 쌓임
+                    artData[key].forEach(function(obj){
                         // console.log(obj.작품명);
-                        tag += 
+                        elList.innerHTML += 
                         `
                         <a href="#">
                             <figure>
@@ -238,12 +261,67 @@
                             </figure>
                         </a>
                         `;
-                        elList.innerHTML = tag;
                     });
-                } 
+            }
+            //버튼 누르기전에도 사진이 기본으로 떠있으면 좋겠다.
+            printFun('디자인');
+        </script>
+    </article>
+
+    <!-- 위엣거 기본화면에 모든 탭 내용 다 뜨게 -->
+    <article>
+        <h2>object 출력</h2>
+        <div class="popol">
+            <div> </div>
+            <div> </div>
+            <div> </div>
+        </div>
+
+        <script>
+            const elPopol = document.querySelectorAll('.popol >div');
+
+            // let num = 0;
+            // for(const data in artData){
+            //     artData[data].forEach(function(obj,k){
+            //         elPopol[num].innerHTML +=
+            //         `
+            //             <a href="#">
+            //                 <figure>
+            //                     <p><img src="${obj.이미지}" width="300"></p>
+            //                     <figcaption>
+            //                         작품명: ${obj.작품명}
+            //                         제작기간: ${obj.제작기간}
+            //                         요약설명: ${obj.요약설명}
+            //                     </figcaption>
+            //                 </figure>
+            //             </a>
+            //         `;
+            //     });
+            //     num++;
+            // }
+        
+            let dataPro = Object.keys(artData);
+
+            elPopol.forEach(function(ele,k){
+                let key =dataPro[k];
+                
+                artData[key].forEach(function(obj){
+                    ele.innerHTML += 
+                    `
+                        <a href="#">
+                            <figure>
+                                <p><img src="${obj.이미지}" width="300"></p>
+                                <figcaption>
+                                    작품명: ${obj.작품명}
+                                    제작기간: ${obj.제작기간}
+                                    요약설명: ${obj.요약설명}
+                                </figcaption>
+                            </figure>
+                        </a>
+                    `;
+                })
             });
 
-            
         </script>
     </article>
 

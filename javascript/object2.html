@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>옵젝2</title>
+</head>
+<body>
+
+<article>
+    <span>
+        <!-- 버튼2개 -->
+    </span>
+    <div class="list">
+        
+        <!-- <h2>제목</h2>
+        <p><img src="./img/01.jpg"></p>
+        <p>
+            개요~ 시간~ 어저구
+        </p> -->
+    </div>
+    <script>
+
+    const elList = document.querySelector('.list');
+    const elSpan = document.querySelector('article >span');
+
+    let m_data = {
+        현재상영영화: [
+        {
+            제목:'인디아나존스:운명의시작', 
+            개요: '액션',
+            시간: '154분',
+            개봉: '2023.06.28',
+            별점: '8.14',
+            출연: '해리슨 포드, 피비 윌러브리지, 매즈 미켈슨',
+            포스터:'./img/01.jpg'
+        },
+        {
+            제목:'귀공자',
+            개요: '액션',
+            시간: '118분',
+            개봉: '2023.06.21',
+            별점: '8.10',
+            출연: '김선호, 강태주, 김강우, 고아라, 박훈정...',
+            포스터:'./img/02.jpg'
+        }
+        ],
+        개봉예정영화: [
+        {
+            제목:'스파이더맨:어크로스 더 유니버스', 
+            개요:'애니메이션', 
+            시간:'140분',
+            개봉:'2023.06.21',
+            별점: '8.80',
+            출연:'샤메익 무어, 헤일리 스테인펠드, 브라이언 타이',
+            포스터:'./img/03.jpg'
+        },
+        {
+            제목:'엘리멘탈', 
+            개요:'애니메이션', 
+            시간:'109분',
+            개봉:'2023.06.14',
+            별점: '8.86',
+            출연:'레아 루이스, 마무두 아티, 피터 손,레아 루이스, 마무두 아티',
+            포스터:'./img/04.jpg'
+        }
+        ]
+    }
+
+    for(const k in m_data){
+        elSpan.innerHTML += `<button>${k}</button>`
+    }
+    const elBtn = document.querySelectorAll('button'); 
+    elBtn.forEach(function(button){
+        button.onclick = function(){
+            elList.innerHTML ='';
+            m_data[this.innerText].forEach(function(obj){
+                elList.innerHTML += 
+                    `
+                    <div class='whole'>
+                        <div class='pack'>
+                            <div class='left'>
+                                <h2>${obj.제목}</h2>
+                                <p>
+                                    개요: ${obj.개요}, ${obj.시간}
+                                </p>
+                                <p>
+                                    개봉일: ${obj.개봉}  <b>★</b>${obj.별점}
+                                </p>
+                                <p>
+                                    출연: ${obj.출연}
+                                </p>
+                            </div>
+                            <div class='right'>
+                                <p><img src="${obj.포스터}"></p>
+                            </div>
+                        </div>
+                        <div class='bot'>
+                            <a>예매하기</a>
+                            <a>예고편</a>
+                        </div>
+                    </div>
+                    `;
+            })
+        }//end onclick
+    })
+    </script>
+    <style>
+        /* div{border: 1px solid red;} */
+        .list{display: flex;}
+        .whole{
+            width: 50%;
+            margin: 10px; background-color: #eee;
+            border: 1px solid black; border-radius: 20px;
+        }
+        .pack{
+            display: flex; flex-wrap: wrap;
+        }
+        .pack .left{width: 70%;}
+    
+        .pack .left p>b{color:rgba(255, 0, 0, 0.637)}
+        .pack .right{width: 30%;}
+        .pack img{width:100%; }
+        
+        .whole .bot {display: flex; }
+        .whole .bot a{
+            width: 50%; padding: 5%;
+            border-left: 1px solid #eee; 
+            background-color: #fff;
+            text-align: center;
+        }
+        .whole .bot a:nth-of-type(1){border-bottom-left-radius: 20px;}
+        .whole .bot a:nth-of-type(2){border-bottom-right-radius: 20px;}
+    </style>
+</article>
+
+</body>
+</html>
