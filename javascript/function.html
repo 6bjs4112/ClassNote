@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수function</title>
+</head>
+<body>
+    
+    <script>//함수 선언
+        // function 네이밍(){ }
+        // let 네이밍 = function(){ }
+
+        //함수 생성
+        let fun = function(값1, ...값){
+            console.log(값);
+        }
+        //실행
+        fun(10,20,30,40,50);
+
+        
+
+    </script>
+
+    <script>//예시-구구단
+
+        // //for문 -구구단 전문
+        // for(let i=1, j=2; i<10; i++){
+        //     console.log(`${j} x ${i} = ${j*i}`);
+            
+        //     if(i==9){ 
+        //         console.log(`${j}단 종료`);  
+        //         j++; i=0;
+        //     }
+        //     if(j==10){ break;}
+        // }
+
+        // //while문-2단
+        // let i=0;
+        // while(i<9){
+        //     console.log(`${2} x ${i} = ${2*i}`);
+        //     i++;
+        // }
+        
+        // //구구단 함수에 넣기
+        // let gugudan = function(j){
+        //     console.log(`~${j}단 입니다~`);
+        //     for(let i=1; i<10; i++){
+        //     console.log(`${j} x ${i} = ${j*i}`);
+        //     }//end for
+        //     console.log(`< ${j}단 끝 >`);
+        // }
+        // // gugudan(5);
+        // // gugudan(9);
+
+
+        // //for문 안에 함수 넣기도 가능
+        // for(let i=2; i<=9; i++){
+        //     gugudan(i);
+        // }
+    </script>
+
+    <!-- 구구단 출력하기 -->
+    <article>
+        <h2>구구단</h2>
+        <div class="btn">
+            <button>전체</button>
+            <button>2</button>
+            <button>3</button>
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+        </div>
+        <div class="result">
+            
+        </div>
+        <script>
+            const elBtn = document.querySelectorAll('button');
+            const elResult = document.querySelector('.result');
+
+            let gugudan = function(j){
+                let str='';
+                str += `<div><b>${j}단</b>`;
+                for(let i=1; i<10; i++){
+                    str+=`
+                        <p>
+                            ${j} x ${i} = ${j*i}
+                        </p>
+                    `;
+                }//end for
+                str +=`</div>`;
+                elResult.innerHTML += str;
+            }//end gugudan
+
+            elBtn.forEach(function(btn){
+                btn.onclick =function(){
+                    elResult.innerHTML ='';
+                    
+                    if(btn.innerText != '전체'){
+                        gugudan(btn.innerText);
+                    }else{
+                        for(let i=2; i<=9; i++){
+                        gugudan(i);
+                        }
+                    }
+                }
+            });//end forEach
+
+        </script>
+        <style>
+            .result{
+                margin: 10px 0; padding: 10px;
+                /* width: 100%;  */
+                background-color: #555; color:#fff;
+                border:2px solid black;
+                /* display: flex; */
+            }
+            button{padding: 10px;}
+            p{font-size: larger;}
+            /* .result> div{
+                width: 100px; padding: 20px;
+                background-color: dodgerblue; 
+                border: 1px solid white;
+                display: flex; flex-direction: column;
+            } */
+        </style>
+    </article>
+
+    <article class="count">
+        <h2>setInterval / count</h2>
+        <div>1000</div>
+        <div>600</div>
+
+
+        <script>//setInterval
+        //콘솔창에 1초마다 슬라이드 추가~
+            /*
+            let sNum = 0;
+            setInterval(function(){
+                sNum++;
+                console.log(`슬라이드 ${sNum}`);
+            },1000)
+            */
+            
+        //html에 적용하기. 
+            const elCount=document.querySelectorAll('.count div');
+
+            let count = [];
+            elCount.forEach(function(el){
+                count.push(Number(el.innerText));
+                el.innerHTML = 0;
+            })
+
+            let startCount = function(n){
+                let sNum = 0;
+                setInterval(function(){
+                    if(sNum < count[n]) sNum++;
+                    elCount[n].innerHTML = sNum;
+                },10)
+            }
+
+            // startCount(0); 
+            // startCount(1); 
+
+            //위에꺼 한번에
+            elCount.forEach(function(v,k){
+                startCount(k)
+            })
+            
+        </script>
+        <style>
+            .count div{font-size: 50px; font-weight: bolder; color: dodgerblue;}
+        </style>
+    </article>
+</body>
+</html>
