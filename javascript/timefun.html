@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>시간과 관련된 함수</title>
+</head>
+<body>
+    
+<article class="interval">
+        <h2>setInterval() / clearInterval()</h2>
+        <div>
+            <p>100%</p>
+        </div>
+        <style>
+            article {width: 500px; margin: 100px auto;}
+            .interval p{ 
+                background-color: dodgerblue; 
+                text-align: right; color: #fff;
+                font-size: 50px; width: 0; /*F5누를때마다 반짝거리는거 없애기*/
+                }
+        </style>
+    <script>
+        const elInterval = document.querySelector('.interval p');
+
+        let num = 0;
+
+        let interval = setInterval(function(){
+            if(num<100){
+                num++;
+                elInterval.style = `width:${num}%`;
+                elInterval.innerText = `${num}%`;
+            }else{
+                clearInterval(interval);
+            }
+        },100); 
+        
+        
+
+    </script>
+</article>
+
+<article class="slide">
+    <h2>ex) interval</h2>
+    <div>
+        <figure>
+            <img src="./img/05.jpg">
+            <img src="./img/04.jpg">
+            <img src="./img/03.jpg">
+        </figure>
+        <p>
+            <button class="prev" data name="prev"><</button>
+            <button class="pause">∥</button>
+            <button class="next">></button>
+        </p>
+    </div>
+    <style>
+        figure{margin: 0; display: flex; transition: .5s; }
+        .slide img{width: 100%;}
+        .slide > div{overflow: hidden;}
+        button{font-size: larger;} 
+    </style>
+    <script>
+        const elSlideBtn = document.querySelectorAll('.slide button');
+        const elSlide = document.querySelector('.slide figure');
+
+        let sNum = 0;
+        // elSlideBtn.forEach(function(btn){
+        //     btn.onclick = function(){
+        //         if(btn.innerText==='∥'){
+        //             clearInterval(slideInterval);
+        //             this.innerText='▶';
+        //         }else if(btn.innerText==='▶'){
+        //             btn.innerText='∥';
+        //             loop();
+        //         }else{ slidePlay(name);}     
+        //     }
+        // })
+//혹은
+        elSlideBtn.forEach(function(btn){
+            btn.onclick = function(){
+                let name = this.className;
+                if(name==='pause'){
+                    if(this.innerText==='∥'){
+                        clearInterval(slideInterval);
+                        this.innerText='▶';
+                    }else{
+                        btn.innerText='∥';
+                        loop();
+                    }   
+                }else{ slidePlay(name);}     
+            }
+        })
+
+        // elSlideBtn[0].onclick = function(){
+        //     slidePlay('prev');
+        // }
+        // elSlideBtn[1].onclick = function(){
+        //     slidePlay('next');
+        // }
+
+//슬라이드 자동재생
+        let slidePlay = function(param){
+            if(param === 'next'){
+                if(sNum < 2){ sNum++; }
+            }else {if(sNum > 0){ sNum--; } }
+            elSlide.style = `transform: translateX(${-100*sNum}%)`;
+        }
+    //기본형
+        // let slideInterval;
+        // slideInterval = setInterval(function(){
+        //     slidePlay('next');
+        // },2000)
+    /*
+        let slideInterval;
+        slideInterval = setInterval(slidePlay('next'),2000)
+        //위에거 왜 안됨? 괄호에 넣으면 바로 그냥 실행해버림
+    */
+        let slideInterval;
+        
+        //이렇게 바꾸면 실행가능
+        
+        function loop(){
+            slideInterval = setInterval(slidePlay,2000,'next')
+        }
+        loop();
+        //pause 기능 만들기
+        // elSlide.onclick = function(){
+        //     clearInterval(slideInterval);
+        //     }
+
+    </script>
+</article>
+
+<script>
+    console.log(
+        Math.random()
+    )
+    console.log(
+        Math.random()
+    )
+</script>
+
+</body>
+</html>
