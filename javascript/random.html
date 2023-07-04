@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>난수 생성</title>
+</head>
+<body>
+    <script>//Math.random.
+        // console.log(Math.random());
+        let ran = Math.random()*255;
+
+        console.log(`ran값 ${ran}`);
+        //소수점 제거
+        console.log(`반올림 ${Math.round(ran)}`);
+        console.log(`내림 ${Math.floor(ran)}`);
+        console.log(`올림 ${Math.ceil(ran)}`);
+    </script>
+
+    <script>//랜덤 배경색
+        let bg = function(){
+            return Math.round(Math.random()*255)
+        }
+        console.log(bg());
+
+        const elBody = document.querySelector('body');
+        elBody.style.background = `rgba(${bg(255)},${bg(255)},${bg(255)},${bg(100)}%)`;
+    </script>
+
+    <!-- 랜덤 사진 -->
+    <article class="random-img">
+        <h2>random image</h2>
+        <img src="./img/01.jpg">
+    <script>
+        let imgs = ['01.jpg','02.jpg','03.jpg','04.jpg']
+        //0~3의 숫자가 나와야함
+        const elImg = document.querySelector('.random-img img');
+        
+        let num = Math.floor(Math.random()*4);
+        
+        // elDiv.innerHTML=`<img src="./img/0${Math.ceil(Math.random()*4)}.jpg">`;
+        elImg.innerHTML=`<img src="./img/${imgs[Math.floor(Math.random()*4)]}">`;
+        elImg.src = `./img/${imgs[num]}`;
+        elImg.setAttribute('src', `./img/${imgs[num]}`);
+    // </script>
+    </article>
+
+    
+    <article class="ex1">
+        <h2>문제맞추랍니다</h2>
+        <button>start</button>
+        <h3>남은시간:</h3>
+        <h4><b>10</b>초</h4>
+        <div class="mondai">
+        </div>
+        <input type="text" class="answer">
+        <h5>맞춘문제: <p></p></h5>
+        <input type="submit" class="sub">
+        <script>
+            let ranNum = function(n){
+                return Math.round(Math.random()*n);
+            }
+        /* 이거 왜 결과 틀림? -> 계속 새로운 난수가 만들어져서
+            console.log(
+            `${ranNum(10000)} + ${ranNum(10000)} 
+            = ${ranNum(10000) + ranNum(10000)}`
+            )
+        */
+            let num1 = ranNum(10000); 
+            let num2 = ranNum(10000); 
+    
+            console.log(
+            `${num1} + ${num2} 
+            = ${num1 + num2}`
+            )
+/* 
+    10초동안 5문제 제공 
+    4문제 이상 맞추면 통과 아니면 실패
+    click setInterval clearInterval if function 사용함
+*/
+
+        const elTime = document.querySelector('.ex1 h4 b');
+        const elTimeBar = document.querySelector('.ex1 h4');
+        const elBtn = document.querySelector('.ex1 button');
+        const elDiv = document.querySelector('.ex1 .mondai');
+
+        
+        //시간 카운트
+        // let timeCount = Number(elTime.innerText);
+        //     elTime.innerHTML = 10 ;
+    
+        elBtn.onclick = function(){
+            //타이머
+            let sNum = 10;
+            let timeInt = setInterval(function(){
+                if(sNum > 0) {
+                    sNum--;
+                    elTime.innerHTML = sNum;
+                    elTimeBar.style =`width:${sNum*10}%`;
+
+                    if(sNum > 0 && sNum%2==0){
+                        let math= setInterval(function(){
+                        let a =Math.round(Math.random()*5);
+                        let b =Math.round(Math.random()*5);
+                        elDiv.innerHTML=`${a}+${b}=`;
+                        })}
+                }
+                else if(sNum == 0){clearInterval(timeInt); }
+            },1000)
+            
+            // //문제생성
+            // let math= setInterval(function(){
+            //     let a =Math.round(Math.random()*5);
+            //     let b =Math.round(Math.random()*5);
+            //     elDiv.innerHTML=`${a}+${b}=`;
+            //     if(sNum == 0){clearInterval(math)}
+            // },2000)
+
+            // setInterval(function mathQ(){
+            //     let a =Math.round(Math.random()*5);
+            //     let b =Math.round(Math.random()*5);
+            //     elDiv.innerHTML=`${a}+${b}=`;
+            //     return mathQ;
+            //     if(sNum == 0){clearInterval(mathQ);;}
+            // }(),2000)
+
+            
+            //답란
+            let answerSheet = setInterval(function(){
+            
+                if(sNum == 0){clearInterval(answerSheet)}
+            },2000)
+
+            //정답 카운트
+            let count=0;
+            
+        }//end btn
+        
+            
+        
+        </script>
+        <style>
+            .ex1{border: 2px solid black; background-color: #eee; padding: 5%;}
+            .ex1 .mondai{border: 2px solid black; padding: 5%; margin: 10px 0;}
+            .ex1 h4{width: 500px; background-color: dodgerblue; color: #000; padding: 10px 0;}
+            .ex1 button{width: 100%; padding: 10px; font-size: larger; background-color: #aaa;}
+        </style>
+    </article>
+</body>
+</html>
