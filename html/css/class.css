@@ -1,0 +1,59 @@
+/*---------------------s1------------------------------------------------------- */
+.s1{
+    color: black;
+}
+.s1.on{
+/* .s1과 .on사이에 공간이 없으니 후손이 아닌 자기 자신을 가리킴 */
+    color: red;
+    
+}
+.s1 div{
+    transition: 1s;
+}
+.s1.on h2{font-size: 3rem;}
+.s1.on div{
+    transform: translateX(50%);
+}
+/*---------------------s2------------------------------------------------------- */
+article{width: 500px; margin: 200px auto;}
+.s2 button.active{background-color: black; color: white; }
+.s2 button{ transition: .5s;}
+.s2 .contents div{
+    display: none;
+    border: 1px solid black;
+    padding: 100px;
+}
+.s2 .contents div.active{display: block;}
+/*---------------------s3------------------------------------------------------- */
+.s3 h2 div{ height: 100px; width: 300px; position: relative;}
+.s3 h2 div span{ position: absolute; right: 0; top: 0; transition: .5s;}
+.s3 h2 div span:nth-child(2){top: 10%;}
+.s3 h2 div span:nth-child(3){top: 20%;}
+.s3 h2 div span::after{
+    content: '';
+    display: flex;
+    margin-top: 5%;
+    border: 1px solid black; 
+    height: 0px; width: 50px; 
+}
+.s3.active h2 div span:nth-child(1){top: 10%; transform: rotate(45deg);}
+.s3.active h2 div span:nth-child(2){opacity: 0;}
+.s3.active h2 div span:nth-child(3){top: 10%; transform: rotate(-45deg); }
+
+
+.s3 nav{
+    position: fixed; left: 0; top:0;
+    width: 20%; height: 100%;
+    background-color: dodgerblue;
+    
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+    
+    transition: .5s;
+    transform: translateX(-100%);
+}
+.s3.active nav{transform: translateX(0%);}
+.s3 nav a{
+    text-decoration: none; color:aliceblue; 
+    font-size: large; font-weight: bold; padding: 10%;
+}

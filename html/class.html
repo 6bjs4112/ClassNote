@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClassList</title>
+    <link rel="stylesheet" href="./css/class.css">
+</head>
+<body>
+    
+    <article class="s1">
+        <h2>class (add, remove, toggle, contains)</h2>
+        <div>
+            콘텐츠가 움직여요~~~
+        </div>
+        
+        <script>
+            const elS1 = document.querySelector('.s1');
+            
+            // elS1.className += ' on';
+            // elS1.className = 's1 on';
+            
+            elS1.onclick = function(){
+                // if(elS1.classList.contains('on')){
+                //     elS1.classList.remove('on');
+                // } else {
+                //     elS1.classList.add('on');
+                // }
+                elS1.classList.toggle('on');
+                //!!!!!주의 클래스 앞에 .은 넣지않음!!!!!
+            }
+
+            console.log(
+                elS1.classList.contains('on')
+            );
+        </script>
+    </article>
+
+    <article class="s2">
+        <h2>클릭버튼 활성화</h2>
+        <div>
+            <button>01</button>
+            <button data-name="tab02">02</button>
+            <button>03</button>
+        </div>
+        <div class="contents">
+            <div>01 콘텐츠</div>
+            <div data-name="tab02">02 콘텐츠</div>
+            <div>03 콘텐츠</div>
+        </div>
+        <script>
+            const elS2 = document.querySelectorAll('.s2 button'); 
+            const elS2Con = document.querySelectorAll('.s2 .contents div'); 
+
+            let num = 0;
+
+            elS2.forEach(function(ele,key){
+                ele.onclick = function(){
+                    elS2[num].classList.remove('active');
+                    elS2[key].classList.add('active');
+                    
+                    elS2Con[num].classList.remove('active');
+                    elS2Con[key].classList.add('active');
+                    num = key;
+                    // let dataName = this.dataset.name;
+                    // elS2Con[].classList.add('active');
+                }// end onclick
+            })//end forEach
+        </script>
+    </article>
+
+    <article class="s3">
+        <h2>버거메뉴
+            <div>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </h2>
+        <nav>
+            <a href="#"> 메뉴 1</a>
+            <a href="#"> 메뉴 2</a>
+            <a href="#"> 메뉴 3</a>
+            <a href="#"> 메뉴 4</a>
+            <a href="#"> 메뉴 5</a>
+        </nav>
+        <script>
+            const elS3 = document.querySelector('.s3');
+            // const elS3Nav = document.querySelector('.s3 nav');
+
+            elS3.onclick = function(){
+                elS3.classList.toggle('active');
+                // elS3.classList.toggle('active');
+            }
+
+        </script>
+    </article>
+
+</body>
+</html>
