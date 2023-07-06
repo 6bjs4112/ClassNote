@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offset어쩌구</title>
+</head>
+<body>
+<!-- 
+    콘텐츠의 위치=
+    offsetTop, offsetLeft
+    
+    콘텐츠의 크기=
+    offsetHeight, offsetWidth 
+-->
+
+    <article>
+        <h2>offset</h2>
+        <div>
+            <img src="./img/02.jpg">
+            <img src="./img/06.jpg">
+            <img src="./img/07.jpg">
+        </div>
+        <p></p>
+        <style>
+            article{
+                width: 80%; margin: 100px auto;
+                padding: 10px; border: 5px solid #000;
+                
+                /* 스크롤 만들기 */
+                /* height: 500px;
+                overflow: scroll; */
+            }
+            /* article div{position: relative;} */
+            h2{font-size:35px;}
+            body, p{margin: 0;}
+            img{width: 400px;}
+            img:nth-of-type(3){width: 40%;}
+            p{
+                position: absolute; left: 0;top: 0;
+                border: 10px solid red;
+                box-sizing: border-box;
+                transition: 1s;
+            }
+        </style>
+        <script>
+            const elImgs = document.querySelectorAll('img');
+            const elP = document.querySelector('p');
+
+            elImgs.forEach(function(ele,key){
+                ele.onclick=function(){
+                    let offset = {
+                        // x:ele.getBoundingClientRect().left,
+                        // y:ele.getBoundingClientRect().top,
+                        // w:ele.getBoundingClientRect().width,
+                        // h:ele.getBoundingClientRect().height
+
+                        x:ele.offsetLeft,
+                        y:ele.offsetTop,
+                        w:ele.offsetWidth,
+                        h:ele.offsetHeight
+                    }
+                    elP.style = `
+                        left:${offset.x}px;
+                        top:${offset.y}px;
+                        width:${offset.w}px;
+                        height:${offset.h}px;
+                    `;
+                }//onclick
+            })//forEach
+            
+            const elArticle = document.querySelector('article');
+
+            console.log(
+                elArticle.offsetWidth,
+                elArticle.clientWidth,
+                elArticle.scrollWidth
+            );
+            console.log(
+                elArticle.getBoundingClientRect(),
+                elArticle.getBoundingClientRect().height
+                //온점 찍어서 개별 값도 받을 수 있음
+            );
+
+        </script>
+    </article>
+</body>
+</html>

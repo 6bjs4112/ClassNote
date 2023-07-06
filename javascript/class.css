@@ -14,7 +14,7 @@
 .s1.on div{
     transform: translateX(50%);
 }
-/*---------------------s2------------------------------------------------------- */
+/*---------------------s2--------------------------------s2--------------------- */
 article{width: 500px; margin: 200px auto;}
 .s2 button.active{background-color: black; color: white; }
 .s2 button{ transition: .5s;}
@@ -24,7 +24,7 @@ article{width: 500px; margin: 200px auto;}
     padding: 100px;
 }
 .s2 .contents div.active{display: block;}
-/*---------------------s3------------------------------------------------------- */
+/*---------------------s3------------------------s3-----------------s3---------- */
 .s3 h2 div{ height: 100px; width: 300px; position: relative;}
 .s3 h2 div span{ position: absolute; right: 0; top: 0; transition: .5s;}
 .s3 h2 div span:nth-child(2){top: 10%;}
@@ -57,3 +57,23 @@ article{width: 500px; margin: 200px auto;}
     text-decoration: none; color:aliceblue; 
     font-size: large; font-weight: bold; padding: 10%;
 }
+/*--------s4-----------s4------------s4----------------s4---------------s4------ */
+.s4 ul{padding: 0; list-style-type: none;}
+.s4 li{border-top: 1px solid #ccc;  padding: 20px 0;}
+
+.s4 ul li p{position: relative;}
+.s4 ul li p::after{
+    content: '∨'; font-size:xx-large;
+    position: absolute; right: 30%; top: -50%;
+    transition: .7s;
+}
+.s4 ul li div{
+    background-color: #eee; 
+    padding: 0 20px; transition: .7s ease-in-out; 
+    max-height: 0; overflow: hidden;
+}
+.s4 li.active div{
+    padding: 20px;
+    max-height: 500px;
+    }
+.s4 li.active p::after{transform: rotate(180deg);}

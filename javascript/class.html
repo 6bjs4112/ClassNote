@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ClassList</title>
-    <link rel="stylesheet" href="./css/class.css">
+    <link rel="stylesheet" href="./class.css">
 </head>
 <body>
     
@@ -97,5 +97,66 @@
         </script>
     </article>
 
+    <article class="s4">
+        <h2>아코디언</h2>
+        <ul>
+            <li>
+                <p>Q js 셀렉터를 잡는 방법은?</p>
+                <div>
+                    document.querySelector,
+                    getElementId, getElementsbyClassName...
+                    document.querySelector,
+                    getElementId, getElementsbyClassName...
+                </div>
+            </li>
+            <li>
+                <p>Q js 셀렉터를 잡는 방법은?</p>
+                <div>
+                    document.querySelector,
+                    getElementId, getElementsbyClassName...
+                </div>
+            </li>
+            <li class="active">
+                <p>Q js 셀렉터를 잡는 방법은?</p>
+                <div>
+                    document.querySelector,
+                    getElementId, getElementsbyClassName...
+                    document.querySelector,
+                    getElementId, getElementsbyClassName...
+                    document.querySelector,
+                    getElementId, getElementsbyClassName...
+                    document.querySelector,
+                    getElementId, getElementsbyClassName...
+                    document.querySelector,
+                    getElementId, getElementsbyClassName...
+                    document.querySelector,
+                    getElementId, getElementsbyClassName...
+                </div>
+            </li>
+        </ul>
+        <script>
+            const elS4 = document.querySelectorAll('.s4 li');
+
+            let s4Num = 0;
+            elS4.forEach(function(ele,key){
+                ele.onclick = function(){
+                    //if문 이용하기
+                    if(this.classList.contains('active')){
+                        this.classList.toggle('active')
+                    }else{
+                        elS4[s4Num].classList.remove('active');
+                        this.classList.add('active')
+                    }
+                    s4Num = key;
+
+                    //토글 이용하기
+                    // this.classList.toggle('active');
+                    // if(s4Num != key){elS4[s4Num].classList.remove('active'); }
+                    // s4Num = key;
+                    
+                }//end onclick
+            })//end forEach
+        </script>
+    </article>
 </body>
 </html>
