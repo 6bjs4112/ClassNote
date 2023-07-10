@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스크롤 한거 두개 병합</title>
+</head>
+<body>
+    <header id="headerID">
+        <a>menu01</a>
+        <a>menu02</a>
+        <a>menu03</a>
+        <a>menu04</a>
+        <a>menu05</a>
+    </header>
+    <main>
+        <section>01</section>
+        <section>02</section>
+        <section>03</section>
+        <section>04</section>
+        <section>05</section>
+    </main>
+    <style>
+        header{
+            position: fixed; left: 0; top: 0;
+            width: 100%; padding: 20px 0;
+            text-align: center; color: #fff;
+            background-color: rgba(0, 0, 0, 0.6);
+            transition: .7s;
+            opacity: 0.5;
+        }
+        header.active{
+            /* transform: translateY(-100%); */
+            opacity: 1;
+        }
+        header a.active{
+            background-color: rgb(30, 144, 255, 0.5);
+            font-weight: bolder;
+            border-radius: 15px; padding: 5px;
+        }
+        section{
+            font-size: 5rem;
+            width: 100%; height: 70vh;
+            display: flex;
+            justify-content: center; align-items: center;
+        }
+        section:nth-child(2n){background-color: #eee;}
+    </style>
+
+    <script>//병합
+        const elMenus = document.querySelectorAll('header a');
+        const elSection = document.querySelectorAll('section');
+        
+        //스크롤 감지
+        let pos = {y:0, y2:0, status:true};
+
+        window.addEventListener('scroll',function(){
+
+            pos.y = window.pageYOffset;
+            pos.status = (pos.y > pos.y2)? headerID.classList.add('active') :  headerID.classList.remove('active'); 
+
+            pos.y2 = pos.y;
+
+            // secArr.forEach(function(secPos,key){
+            //     if( (secPos.y - window.pageYOffset/2) < window.pageYOffset){
+            //         menuFun(key);
+            //     }
+            // });
+        })
+        
+        //메뉴 클릭시 스크롤 이동
+        let menuHighlight = 0;
+        elMenus.forEach(function(menu,key){
+            menu.onclick = function(){
+                elSection[key].scrollIntoView(
+                    {behavior:"smooth", block:"center"}
+                );
+        //메뉴 클릭시 불 들어오게        
+                menuFun(key);
+            }
+        })
+        function menuFun(key){
+            elMenus[menuHighlight].classList.remove('active');
+            elMenus[key].classList.add('active');
+            menuHighlight = key;
+        }
+
+        //스크롤 위치에 따라 불 들어오게
+        let secArr = [];
+            elSection.forEach(function(ele){
+                secArr.push( ele.getBoundingClientRect() );
+            })
+            window.addEventListener('scroll',function(){
+                secArr.forEach(function(secPos,key){
+                    if( (secPos.y - window.pageYOffset/2) < window.pageYOffset){
+                        menuFun(key);
+                    }
+                });
+            })
+
+
+
+
+    </script>
+</body>
+</html>

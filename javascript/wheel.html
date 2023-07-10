@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마우스 휠을 돌려라아아아</title>
+</head>
+<body style="overflow: hidden;">
+    <!-- 스크롤 활성화용 -->
+    <main>
+        <section>壱</section>
+        <section>弍</section>
+        <section>参</section>
+        <section>四</section>
+        <section>伍</section>
+    </main>
+
+    <aside></aside>
+    <style>
+        section{
+            width: 100%; height: 100vh;
+            font-size: 5rem; background-color: navy; color: aliceblue;
+            display: flex; text-align: center;
+            justify-content: center; align-items: center;}
+        section:nth-child(2n){background-color: dodgerblue;}
+        aside{
+            position: fixed; right: 5%; top: 50%;
+            transform: translate(-50%,-50%);
+        }
+        aside a{
+            width: 25px; height: 25px; margin: 25px 0;
+            background-color: white;
+            border-radius: 100%;
+            display: block;
+        }
+        aside a.active{background-color: lightgreen;}
+    </style>
+
+    <script>
+        const elSection = document.querySelectorAll('main section');
+        let move = 0;
+        //aside잡기
+        const elAside = document.querySelector('aside');
+        
+        elSection.forEach(function(section,key){
+            elAside.innerHTML+=`<a></a>`;
+            section.addEventListener('wheel',function(event){
+                canMove(event,key)
+            })//end addEvent
+        })//end forEach
+
+        //함수로 빼기
+        function canMove(event,key){
+            try{
+                if(event.wheelDelta < 0){
+                    move = elSection[key].nextElementSibling.offsetTop;
+                }else{
+                    move = elSection[key].previousElementSibling.offsetTop;
+                }
+            }catch{}
+            finally{
+                window.scrollTo({
+                top:move,
+                left:0,
+                behavior:'smooth'});
+            }
+        }
+        
+        const elIndi = document.querySelectorAll('aside a');
+
+        let indiNum=0;
+
+        elIndi.forEach(function(indi,key){
+            indi.onclick = function(){
+                elIndi[indiNum].classList.remove('active');
+                indi.classList.add('active');
+                indiNum = key;
+                elSection[key].scrollIntoView(
+                    {behavior:"smooth"}
+                )
+            }
+        })
+        
+
+
+        
+    </script>
+</body>
+</html>

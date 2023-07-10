@@ -60,6 +60,22 @@
 
         </script>
     
+        <!-- <script>//위 함수들 대신에 이렇게도 쓸수있음
+            const io = new IntersectionObserver(entries =>{
+                entries.forEach(entry=>{
+                    if(entry.intersectionRatio > 0){
+                        entry.target.classList.add('active');
+                    }
+                })
+            })
+            io.observe(elImg[0]);
+            io.observe(elImg[1]);
+            io.observe(elImg[2]);
+            io.observe(elImg[3]);
+            io.observe(elImg[4]);
+            io.observe(elImg[5]);
+            io.observe(elImg[6]);
+        </script> -->
     
     
     
