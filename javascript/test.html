@@ -1,126 +1,39 @@
- 
-  <article>
-    <p>
-      <!-- <button>현재 상영영화</button>
-      <button>개봉 상영영화</button> -->
-    </p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>테스트용</title>
+</head>
+<body>
+<!-- 
+  10초동안 5문제 제공 
+  4문제 이상 맞추면 통과 아니면 실패
+  click setInterval clearInterval if function 사용함
+-->
+<article class="quiz">
+  <h2>문제맞추기</h2>
+  <button>start</button>
+  <h3>남은시간:</h3>
+  <h4><b>10</b>초</h4>
+  <div class="mondai">
+  </div>
+  <input type="text" class="answer">
+  <h5>맞춘문제: <p></p></h5>
+  <input type="submit" class="sub">
+</article>
 
-    <div class="list">
-      <!-- <a href="" class="#">
-        <figure>
-          <p><img src="./img/01.jpg" width="200" alt=""></p>
-          <figcaption>
-            제목:인디아나 존스
-            개요:액션
-            상영시간: 154분
-            개봉:2023.06.28
-            평점:8.14
-            출연:해리슨 포드,브리치 메즈
-          </figcaption>
-        </figure>
-      </a> -->
-    </div>
-  </article>
+<style>
+  .quiz{border: 2px solid black; 
+    width: 600px; height: 600px;
+    margin: 200px auto; padding: 10px;
+    display: flex; justify-content: center; align-items: center; flex-direction: column;}
+</style>
 
-
-
-
-  <script>
-
-    const elList = document.querySelector('.list');
-    const elP = document.querySelector('article > p');
-    // elButton = document.querySelectorAll('button');
-    
-
-
-    let  data = {
-      현재상영영화:[
-        {
-          제목:'인디아나 존스',
-          개요: '액션',
-          상영시간: '154분',
-          개봉:`2023.06.28`,
-          평점:`8.14`,
-          출연:`해리슨 포드,브리치 메즈`
-        },
-        {
-          제목:'귀공자',
-          개요: '액션',
-          상영시간: '118분',
-          개봉:`2023.06.21`,
-          평점:`8.09`,
-          출연:`김선호,강태주`
-        },
-        {
-          제목:'스파이더맨',
-          개요: '애니메이션',
-          상영시간: '140분',
-          개봉:`2023.06.21`,
-          평점:`8.14`,
-          출연:`해리슨 포드,브리치 메즈`
-        },
-      ],
-      개봉예정영화:[
-        {
-          제목:'악마들',
-          개요: '스릴러',
-          상영시간: '106분',
-          개봉:`2023.07.05`,
-          평점:`8.14`,
-          출연:`해리슨 포드,브리치 메즈`
-        },
-        {
-          제목:'빈틈없는 사이',
-          개요: '액션',
-          상영시간: '154분',
-          개봉:`2023.06.28`,
-          평점:`8.14`,
-          출연:`해리슨 포드,브리치 메즈`
-        },
-        {
-          제목:'디파티드',
-          개요: '액션',
-          상영시간: '154분',
-          개봉:`2023.06.28`,
-          평점:`8.14`,
-          출연:`해리슨 포드,브리치 메즈`
-        },
-      ]
-    };
-
-    
-
-    for(const k in data){
-      elP.innerHTML += `<button>${k}</button>`;
-    }
-    const elButton = document.querySelectorAll('button');
-
-
-    elButton.forEach(function(button, k){
-      button.onclick = function () {
-        tag = '';
-
-      let key = this.innerText;
-
-
-
-        data[key].forEach(function(obj){
-          tag += `<a href="" class="#">
-        <figure>
-          <p><img src="./img/01.jpg" width="200" alt=""></p>
-          <figcaption>
-            제목:인디아나 존스
-            개요:액션
-            상영시간: 154분
-            개봉:2023.06.28
-            평점:8.14
-            출연:해리슨 포드,브리치 메즈
-          </figcaption>
-        </figure>
-      </a>`;
-        })
-
-        elList.innerHTML = tag;
-      }
-    })
+<script>
+//랜덤.html에 좀 있음
 </script>
+  
+</body>
+</html>

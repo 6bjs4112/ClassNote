@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>정리한번하고들어갑시다</title>
+</head>
+<body>
+<!-- 
+    1. 스크롤 방향 체크
+    2. 스크롤의 위치값(pageYoffset / pageXoffset)
+    3. 오브젝트의 정보 getBoundingClientReact(), offsetTop...
+    4. 스크롤이 있는 오브젝트 크기(scrollWidth, scrollHeight)
+    5. 일정 시간후 실행 setTimeout / clearTimeout
+    6. addEventListener(function(){   })
+    7. wheel / event.wheelDelta (내림-120, 올림120) 
+-->
+    <style>
+    article{
+        width: 50%; margin: 200px auto;
+        border: 2px solid black; padding: 60px;
+    }
+    </style>
+
+    <article class="ex1">
+        <h2>ex1. 스크롤 방향 체크</h2>
+        <div style="white-space: pre-line;">
+            스크롤 up, down시 클래스를 넣거나 삭제하시오
+            스크롤 down시 배경색 변함
+            <p>스크롤: <b></b></p>
+        </div>
+
+        <style>
+            .ex1.active{background-color: rgb(30, 144, 255, 0.6); }
+        </style>
+        <script>
+            const elEx1 = document.querySelector('.ex1');
+            const elEx1Pb = document.querySelector('.ex1 p b');
+            let pos1 = {y:0, y2:0};
+
+            window.addEventListener('scroll',function(){
+                pos1.y = window.pageYOffset;
+                if(pos1.y > pos1.y2){
+                    elEx1.classList.add('active');
+                    elEx1Pb.innerHTML='↓↓↓↓DOWN↓↓↓↓';
+                }else{
+                    elEx1.classList.remove('active');
+                    elEx1Pb.innerHTML='↑↑↑↑UP↑↑↑↑↑↑';
+                }
+                pos1.y2 = pos1.y;
+            })
+            
+        </script>
+    </article>
+
+    <article class="ex2">
+        <h2>ex2. 스크롤 pageYoffset 활용</h2>
+        <div>텍스트의 크기를 키우거나 줄이시오</div>
+
+        <script>
+            const elEx2 = document.querySelector('.ex2');
+            let pos2 = {y:0, y2:0};
+
+            window.addEventListener('scroll', function(){
+                pos2.y = pageYOffset;
+                if(pos2.y > pos2.y2){
+                    elEx2.style = `font-size:xx-large;`;
+                }else{
+                    elEx2.style = `font-size:2px;`;
+                }
+                pos2.y2 = pos2.y;
+            })
+
+        </script>
+    </article>
+
+    <article class="ex3">
+        <h2>ex3. getBoundingClientReact() 활용</h2>
+        <div>스크롤시 뷰포트화면에 해당 내용이 나오면 애니메이션을 주시오(style활용)</div>
+        
+        <script>
+            const elEx3 = document.querySelector('.ex3');
+            console.log(elEx3.getBoundingClientRect().y);
+
+            window.addEventListener('scroll',function(){
+                if(elEx3.getBoundingClientRect().y-window.pageYOffset/2 < window.pageYOffset){
+                    elEx3.style=`transform: rotate(312deg); transition: 1s;`;
+                }else{
+                    elEx3.style=`transform: rotate(0deg);`;
+                }
+            })
+
+        </script>
+    </article>
+
+    <article class="ex4">
+        <h2>ex4. 오브젝트 scrollWidth</h2>
+        <div>
+            <p>
+            1. 스크롤 오브젝트(div)의 전체 크기를 구하시오.<br>
+            2. li태그에 width값을 넣으시오.(전체크기 3등분)
+            </p>
+            <ul><li>01</li><li>02</li><li>03</li></ul>
+        </div>
+        <style>
+            .ex4 div{overflow-x:scroll;}
+            .ex4 p{width:1900px}
+            .ex4 ul{
+                display: flex; 
+                margin:0; padding:0; 
+                list-style: none;
+            }
+            .ex4 ul li{
+                display:inherit; 
+                align-items: center;
+                border:1px solid #000; height:200px;
+                flex-shrink: 0;
+            }
+        </style>
+        <script>
+            const elEx4 = document.querySelector('.ex4 div');
+            const elEx4Li = document.querySelectorAll('.ex4 div li');
+
+            console.log(elEx4.getBoundingClientRect());
+            console.log(elEx4.scrollWidth/3);
+            
+            elEx4Li.forEach(function(ele,key){
+                elEx4Li[key].style = `width: ${elEx4.scrollWidth/3}px`;
+            })
+            
+            elEx4.innerHTML+=`<br>li태그의 width값은 ${(elEx4.scrollWidth)/3}입니다.`;
+
+        </script>
+    </article>
+
+    <article class="ex5">
+        <h2>ex5. 일정시간 후 실행(setTimeOut)</h2>
+        <div> 
+            뷰포트화면에 해당 콘텐츠가 보이면 
+            figure 자손으로 이미지 3개를 출력하시오.(단 0.3초 간격으로 출력)
+            <figure></figure>
+        </div>
+        <style>
+            .ex5 figure{margin:0;}
+            .ex5 figure img{width:200px;}
+        </style>
+        <script>
+            const elEx5 = document.querySelector('.ex5');
+            const ex5Figure = document.querySelector('.ex5 figure');
+            let ex5Time;
+            const allBody=document.querySelector('body');
+
+            console.log(allBody.getBoundingClientRect());
+            console.log(allBody.clientHeight);
+            console.log(elEx5.getBoundingClientRect().y);
+            console.log(window.pageYOffset);
+
+            window.addEventListener('scroll',function(){
+                clearTimeout(ex5Time);
+                if(ex5Figure.getBoundingClientRect().y-window.pageYOffset < window.pageYOffset){
+                    for (let i=1; i<4;i++){
+                        ex5Time = setTimeout(function(){
+                            ex5Figure.innerHTML+=`<img src="./img/0${i}.jpg">`;
+                        },1000*i)
+                    }//end for
+                }//end if
+            })
+            // for (let i=1; i<4;i++){
+            //     ex5Time = setTimeout(function(){
+            //         ex5Figure.innerHTML+=`<img src="./img/0${i}.jpg">`;
+            //     },1000*i)
+            // }//end for
+            
+
+            // ex5Time = setTimeout(function(){
+            //             ex5Figure.innerHTML+=`<img src="./img/01.jpg">`
+            //         },1000)
+            //         ex5Time = setTimeout(function(){
+            //             ex5Figure.innerHTML+=`<img src="./img/02.jpg">`
+            //         },2000)
+            //         ex5Time = setTimeout(function(){
+            //             ex5Figure.innerHTML+=`<img src="./img/03.jpg">`
+            //         },3000)
+
+        </script>
+    </article>
+
+</body>
+</html>
