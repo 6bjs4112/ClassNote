@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON 인덱스</title>
+</head>
+<body>
+    <article>
+        <h2>데이터 출력</h2>
+        <div class="list">
+            <p>이름</p>
+        </div>
+    </article>
+
+    <script>//화살표 함수 사용중
+        //외부 문서 가져오기
+        fetch('./data.json')
+        //문자열 -> 객체 변환
+        .then(res => res.json() )
+        //객체를 활용해서 프로그래밍
+        .then(data=> {
+            console.log(data.member),
+            console.log(data.member[0].name)
+            
+            data.member.forEach( obj =>{
+            /*  obj = {"id":"0", "name":"피카츄"}  인거임*/
+                console.log( obj.name );
+            })
+        })
+
+    </script>
+</body>
+</html>
+<!-- 
+    .then(function(data){
+            console.log(data.member),
+            console.log(data.member[0].name)
+        }) 
+-->

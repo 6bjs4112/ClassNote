@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>storage</title>
+</head>
+<body>
+    <!-- setItem, getItem, removeItem, clear -->
+    <script>
+
+        //생성방법 2개
+        localStorage.numL =1000; 
+        localStorage.setItem('numL1',1111);
+        
+        //삭제하기
+        localStorage.removeItem('numL1');
+        //한번에 삭제하기
+        //localStorage.clear();
+
+        //출력방법 2개
+        console.log(localStorage.numL);
+        console.log(localStorage.getItem('numL1'));
+
+        //클릭하면 생성후 저장
+        window.onclick = function(){
+            localStorage.numL2 =2000; 
+        }
+
+        //===========로컬=>세션=============로컬은 껏다 켜도 있는데 세션은 사라진대
+        //생성방법 2개
+        sessionStorage.numS =1000; 
+        sessionStorage.setItem('numS1',1111);
+        //클릭하면 생성후 저장
+        window.onclick = function(){
+            sessionStorage.numS2 =2000; 
+        }
+    
+    </script>
+</body>
+</html>

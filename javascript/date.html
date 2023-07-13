@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>날짜</title>
+</head>
+<body>
+    <script>
+        let today = new Date();
+        console.log(today);//전체
+        console.log(`${today.getFullYear()} 년`);
+        console.log(today.getMonth()+1);//월
+        //getMonth는 0~11까지 나옴. 그래서 맞는 월로 표기하기 위해 +1
+        console.log(today.getDate());//일
+        console.log(today.getDay());//요일. 0~6까지 나옴. 일요일=0
+        //요일을 숫자 대신 글자로 바꾸려면?
+        console.log(['일','월','화','수','목','금','토'][today.getDay()]);
+        console.log(today.getHours());//시
+        console.log(today.getMinutes());//분
+        console.log(today.getSeconds());//초
+        console.log(today.getTime());//밀리초
+    </script>
+
+    <script>//시간의 비교, 변경
+        let day1 = new Date('2023-07-11');
+        let day2 = new Date('2023-07-14');
+
+        //이걸 비교할수 있게 하는게 getTime밀리초
+        console.log(day1 > day2) //false
+        console.log(day1 < day2) //true
+        console.log(day1 < today && day2 >= today) 
+        //↑이런 식으로 참여 기간 설정 가능함. true이면 참여가능 f면 불가능 이런식으로
+
+        //쉬는날 d-day계산기
+        let day3 = new Date('2023-08-15:0:0:0');
+        console.log( (day3 - today) );//이렇게 하면 밀리초 기준으로 나옴
+        let wholeDay =24*60*60*1000;//하루의 밀리초
+        console.log( (day3 - today)/wholeDay );//이제 남은 일수 나옴. 33.4일이네? 올림하자
+        console.log( Math.round((day3 - today)/wholeDay) );//올림 후 34일
+
+        //set뭐시기로 시간수정 가능. 다음날까지 연장되는~오늘하루보지않기 기능
+        // today.setSeconds(today.getSeconds()+10);
+        // console.log(today.getSeconds());
+    </script>
+    
+    <!-- 하루동안보지않기 -->
+    <article>
+        <h2>하루동안보지않기팝업</h2>
+        <figure><img src="./img/04.jpg"></figure>
+        <input type="checkbox">10초동안보지않기
+        <button>닫기</button>
+
+        <style>
+            article{
+                position: fixed; left: 50%; top: 50%;
+                transform: translate(-50%,-50%);
+                padding: 3%; background-color: #ddd;
+                border: 2px solid #bbb;
+            }
+            figure{margin: 0;}
+        </style>
+
+        <script>
+            //쿠키 공간에 값 남기기. F12 애플리케이션>쿠키에서 확인가능
+            // document.cookie ='name = dayname; expires =2023-07-12';
+
+
+            const closeBtn = document.querySelector('button');
+            const checkBox = document.querySelector('input');
+            const popup = document.querySelector('article');
+
+                closeBtn.onclick = function(){
+                    console.log(checkBox.checked);
+                    //체크를 하고 닫았다면 true, 아니면 false
+                    if(checkBox.checked){
+                        let popDay = new Date();
+                        popDay.setSeconds(popDay.getSeconds()+10);
+                        document.cookie = `event=oneday;expires=${popDay.toUTCString()}`;
+                    }
+                    popup.style.display = 'none';
+                }
+            console.log(document.cookie);//쿠키값 있나없나 체크
+            console.log(document.cookie.match('oneday'));//문자열로 체크
+
+            if(document.cookie.match('oneday')){
+                popup.style.display = 'none';
+            }else{
+                popup.style.display = 'block';
+            }
+        </script>
+    </article>
+</body>
+</html>

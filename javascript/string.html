@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문자열</title>
+</head>
+<body>
+    <article>
+        <h2>이미지명 바꾸기</h2>
+        <img src="./img/01.jpg" id="imageId">
+    </article>
+    <a href="#test-1">test1</a>
+    <a href="#test-2">test2</a>
+
+    <script>
+        let str = imageId.getAttribute('src'); 
+        //↑에서 .과 /를 찾아봅시다
+        let startIndex = str.lastIndexOf('/'); //인덱스 5에 있음
+        let endIndex = str.lastIndexOf('.');//뒤에서부터 . 찾음. 인덱스8에 있음
+        let findStr = str.slice(startIndex+1,endIndex);//필요한 부분 찾아서 변수에 담음
+        let changeStr = str.replace(findStr,'02');//바꾼값을 변수에 담음
+
+        //다 준비되었으니 이미지의 src값을 변경해주기
+        imageId.src = changeStr;
+
+
+        console.log(
+            str.substring(startIndex,endIndex),
+            //(인덱스 5~8사이에) 있는 문자 => /01 출력됨
+            str.substring(startIndex+1,endIndex),
+            //이제 01 만 출력됨
+            str.slice(startIndex+1,endIndex),
+            //위와 같은결과, 01 나옴
+            str.replace(findStr,'02'),
+            //찾은 문자 01을 02로 바꿔서 (./img/02.jpg)로 전체 반환 
+        )
+        //변수명.substring(시작위치, 끝위치)
+    </script>
+<!--
+    <script>//이미지명 변경2~
+        let str2 = imageId.src;
+        //해당 이미지 이름에 활성화 되면 _on을 넣고 싶음
+        /* 이런식으로
+        ./img02.jpg => ./img02_on.jpg
+        */
+        let endIndex2 = str2.lastIndexOf('.');
+        let findStr2 = str2.slice(endIndex2-5,endIndex2);
+        let changeStr2 = str2.replace(findStr2,`${findStr2}_on`);
+
+        imageId.src=changeStr2;
+
+        console.log(
+            changeStr2
+        )
+    </script>
+-->
+    <script>//화면의 url
+        console.log(
+            location,
+            //전체정보
+            location.href,
+            //화면의 url
+            location.hash,
+            //#뒤의 문자열 가져오기
+            location.hash.split('-'),
+            //hash를 - 전후로 분리해서 배열에 담음
+            location.hash.split('-')[1],
+            // 첫번째 배열에 담긴거 가져옴
+        );
+        //a태그 클릭시 사진마다 바뀌는 번호만 가져오게
+        const elA = document.querySelectorAll('a');
+
+        elA.forEach(function(aTag){
+            aTag.onclick = function(e){
+                // e.preventDefault();
+                // //a 이동 경로 차단
+                setTimeout(function(){
+                    console.log(
+                        location.hash.split('-')[1]
+                        //근데 누르기 전의 url이 바뀌기 전의 값이 나옴. 그럼어케하지?
+                        //setTimeout로 감싸서 한박자늦게 => 이제 제대로 값 나옴
+                    )//end console
+                })//setTime
+                
+            }//onclick
+        })//forEach
+    </script>
+
+    <script>//주민번호체크
+        let jumin = '6703102042116';
+        let num = [2,3,4,5,6,7,8,9,2,3,4,5];
+        let total = 0;
+        
+
+        num.forEach(function(n,k){
+            total += (n * jumin[k]);
+        })
+        //주민번호검증공식? =>이거하면 끝자리 나옴
+        console.log( (11-(total%11))%10 );
+    </script>
+</body>
+</html>
