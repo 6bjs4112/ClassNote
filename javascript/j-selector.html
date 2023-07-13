@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery-selector</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <!-- ↑ 구글 CDN에서 긁어온 것, jQuery사용하려면 있어야 함-->
+</head>
+<body>
+    <ul>
+        <li>01</li>
+        <li>02</li>
+        <li>03</li>
+        <li><img src="./img/02.jpg"></li>
+    </ul>
+    <script>
+        //제이쿼리 기본 문법
+        // $('선택자').메소드();
+        // =>document.querySelector('선택자') 랑 같음
+        $('body')
+        .css({
+            "background-color":"dodgerblue",//css명령 그대로 쓰고싶으면 큰따옴표 안에
+            fontSize:"50px" //하이픈- 없애고 대문자로 변경 해서 씀
+        })        
+        .on("click", function(){
+            alert('wow!!!!')
+        })
+        $('li').css({ //복수선택자에 forEach안돌리고 한번에 적용 가능함
+            border: "3px solid red"
+        })
+        .on('click',function(){
+            $(this).css('color','white')
+            //제이쿼리의 모든 선택자는 $( )를 넣어서 잡는다
+            console.log(
+                $(this).index(),
+                //클릭시 해당 li의 인덱스값을 반환
+                $(this).text(), //괄호 안을 비워두면 값을 가져옴
+                // $(this).html('<p>tag</p>'), //괄호 안을 채우면 대체됨
+                $(this).attr('class','abc'), 
+                //클래스명 abc를 추가
+                $(this).find('img').attr('src')
+                //img를 찾고, 그 이미지의 소스를 가져와라
+            )
+        })
+    </script>
+<!-- 
+    <div class="a">
+        <p> <span class="b">01</span> </p>
+    </div>
+    <script>
+        $('.a').find('.b').html('02').attr('class').css('color: red')
+        $('.a').on('click',function(){
+            $(this).index()
+            $(this).text()
+            $(this).html()
+            $(this).css()
+            $(this).attr()
+        })
+    </script> -->
+</body>
+</html>

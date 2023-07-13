@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery-animate</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+</head>
+<body>
+    <header>
+        <ul>
+            <li>
+                <a href="#">menu01</a>
+                <div>
+                    <a href="#">s01</a>
+                    <a href="#">s02</a>
+                    <a href="#">s03</a>
+                </div>
+            </li>
+            <li>
+                <a href="#">menu02</a>
+                <div>
+                    <a href="#">s04</a>
+                    <a href="#">s05</a>
+                    <a href="#">s06</a>
+                </div>
+            </li>
+        </ul>
+        <style>
+            header{
+                background-color: black;
+                text-align: center;
+            }
+            header ul{
+                display: flex; 
+                justify-content: center;
+            }
+            header ul a{display: block; color: white;}
+            header ul div{
+                position: absolute; left: 0; top: 100%;
+                background-color: rgb(30, 144, 255, 0.8); width: 100%;
+                display: none;
+            }
+            header ul li{position: relative; padding: 20px;}
+        </style>
+    </header>
+    <script>//드롭다운메뉴
+        //마우스 호버하면 숨겨진 메뉴가 나오게해줘
+        $('header li').on('mouseenter',function(){
+            $('li>div').stop().slideUp(); //다른거 호버하면 열린게 닫히게
+            $(this).find('div').stop().slideDown();
+        })
+
+        /*
+        제이쿼리로 애니메이션 줄때는 앞에 .stop() 붙이기~
+        .slideToggle()은 스크롤같은 애니메이션~
+        .slideDown()은 펼쳐지고 유지됨
+        */
+    </script>
+
+    <article class="fade">
+        <h2>Fade</h2>
+        <div>
+            <button> < </button>
+            <button> > </button>
+        </div>
+        <figure>
+            <img src="./img/01.jpg">
+            <img src="./img/02.jpg">
+            <img src="./img/03.jpg">
+        </figure>
+        <style>
+            .fade figure{width: 400px; position: relative;}
+            .fade figure img{
+                width: inherit; /*부모값을 상속받겠습니다*/
+                position: absolute; left: 0; top: 0;
+            }
+            .fade figure img:not(:first-child){
+                display: none;
+                /*:not 은 ()안의 것을 제외하고~ 라는 뜻*/
+            }
+        </style>
+    </article>
+    <script>
+    /* //무한루프
+        let num = 0;
+        let inter = setInterval(function(){
+            $('.fade img').eq(num).fadeOut(1000);
+            num++;
+            if(num==3){num=0;}
+            $('.fade img').eq(num).fadeIn(1000);
+        },3000)
+    */   
+        //앞뒤버튼
+        let num = 0;
+        $('.fade button').on('click',function(){
+            if($(this).index()){
+                //next
+                // 1 2 3
+                $('.fade img').eq(num).fadeOut(300);
+                num++;
+                if(num==3){num=0;}
+                $('.fade img').eq(num).fadeIn(300);
+            }else{
+                //prev
+                //3 2 1 
+                $('.fade img').eq(num).fadeOut(300);
+                num--;
+                // if(num==-3){num=0;}
+                if(num<0){num=2;}
+
+                $('.fade img').eq(num).fadeIn(300);
+            }
+        })
+    </script>
+
+    <!-- 아코디언. class.html/css에서 가져옴 -->
+    <article class="s4" style="margin: 500px auto;">
+        <h2>아코디언</h2>
+        <ul>
+            <li>
+                <p>Q js 셀렉터를 잡는 방법은?</p>
+                <div>
+                    document.querySelector,
+                    getElementId, getElementsbyClassName...
+                    document.querySelector,
+                    getElementId, getElementsbyClassName...
+                </div>
+            </li>
+            <li>
+                <p>Q js 셀렉터를 잡는 방법은?</p>
+                <div>
+                    document.querySelector,
+                    getElementId, getElementsbyClassName...
+                </div>
+            </li>
+            <li>
+                <p>Q js 셀렉터를 잡는 방법은?</p>
+                <div>
+                    document.querySelector,
+                    getElementId, getElementsbyClassName...
+                    document.querySelector,
+                    getElementId, getElementsbyClassName...
+                    document.querySelector,
+                    getElementId, getElementsbyClassName...
+                    document.querySelector,
+                    getElementId, getElementsbyClassName...
+                    document.querySelector,
+                    getElementId, getElementsbyClassName...
+                    document.querySelector,
+                    getElementId, getElementsbyClassName...
+                </div>
+            </li>
+        </ul>
+        <style>
+            .s4 ul{padding: 0; list-style-type: none;}
+            .s4 li{border-top: 1px solid #ccc;  padding: 20px 0;}
+
+            .s4 ul li p{position: relative;}
+            .s4 ul li p::after{
+                content: '∨'; font-size:xx-large;
+                position: absolute; right: 30%; top: -50%;
+            }
+            .s4 ul li div{
+                background-color: #eee; 
+                padding: 20px;
+                /* max-height: 0;  */
+                /* overflow: hidden; */
+                display: none;
+            }
+            .s4 li.active p::after{transform: rotate(180deg);}
+        </style>
+    </article>
+    <script>
+        //li클릭시 안에있는 div보여주게
+        $('.s4 li').on('click',function(){
+
+            if(!$(this).hasClass('active')){
+                $('.s4 li>div').stop().slideUp();
+                $(this).removeClass('active')
+            }
+            
+            $(this)
+            .toggleClass('active')
+            .find('div').stop().slideToggle();
+
+        })
+    </script>
+    <script>
+        addClass()
+        removeClass()
+        toggleClass()
+        hasClass()
+    </script>
+
+
+</body>
+</html>
