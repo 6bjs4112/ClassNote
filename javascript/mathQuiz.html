@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문제를 맞추자</title>
+</head>
+<body>
+
+    <article class="quiz">
+        <h2>문제를 맞추자</h2>
+        <button>start</button>
+        <h3>↓남은시간↓</h3>
+        <h4><b>10</b>초</h4>
+        <h3>맞춘 문제 갯수: <span></span></h3>
+        <div class="mondai">
+        </div>
+        <div>
+            <input type="text" 
+                name="inputValue" 
+                id="inputValue" 
+                onchange="inputSlot()">
+            <p></p>
+        </div>
+        <button class="sub">제출</button>
+        <div class="result"></div>
+
+<!-- ================================================================ -->
+        <script>
+/* 
+    10초동안 5문제 제공 
+    4문제 이상 맞추면 통과 아니면 실패
+    click setInterval clearInterval if function 사용함
+*/
+        const elTime = document.querySelector('.quiz h4 b');
+        const elTimeBar = document.querySelector('.quiz h4');
+        const elBtn = document.querySelector('.quiz button');
+        const elDiv = document.querySelector('.quiz .mondai');
+        const elScore = document.querySelector('.quiz h3 span');
+        const elOX = document.querySelector('.quiz div p');
+        const elResult = document.querySelector('.quiz .result');
+        
+        let c = 0;
+
+        elBtn.onclick = function(){
+            elBtn.style='background-color: green';
+            //초기화
+            score = 0;
+            elOX.innerHTML= '';
+            elResult.innerHTML='';
+
+            //10초 카운트다운
+            let sNum = 10;
+            let timeInt = setInterval(function(){
+                if(sNum > 0) {
+                    sNum--;
+                    elTime.innerHTML = sNum;
+                    elTimeBar.style =`width:${sNum*10}%`;
+                }else if(sNum == 0){
+                    clearInterval(timeInt); 
+                    elTimeBar.style =`width:${100}%; background-color: rgb(204, 19, 19);`
+                    // elTimeBar.style =`background-color: rgb(204, 19, 19)`;
+                }
+            },1000)
+
+            //2초마다 문제 만들기
+            let makeMath = function(){
+                let a = Math.round(Math.random()*5);
+                let b = Math.round(Math.random()*5);
+                c = a + b;
+                elDiv.innerHTML=`${a}+${b}= ?`;
+                if(sNum==2){ clearInterval(makeQuiz);}
+            }
+            let makeQuiz= setInterval(makeMath,2000)
+            makeMath();//2초 기다리지 않아도 나오게 한번 실행
+
+            //종료알림
+            let end = setInterval(function(){
+                alert('종료!!');
+                if(score>=4){
+                    elResult.innerHTML=`5개중 ${score}개를 맞췄습니다.<br>통과!`
+                    elResult.style='color:green';
+                }
+                else{
+                    elResult.innerHTML='실패';
+                    elResult.style='color:red';
+                }
+                elBtn.style='background-color: rgb(204, 19, 19)';
+            },10000)
+           
+        }//end onclick start  
+
+      //채점
+        let score = 0;
+        function inputSlot(){
+            var inputAnswer = document.getElementById('inputValue').value;
+
+            if(inputAnswer==(c)){
+                elOX.innerHTML+=('O');
+                score++;
+            }else{
+                elOX.innerHTML+=('X');
+            }
+            elScore.innerHTML=score;
+        }
+
+        </script>
+
+        <style>
+            .quiz{width: 500px; height: 500px; margin: 100px auto; border: 2px solid black; background-color: #eee; padding: 5%;}
+            .quiz .mondai{border: 1px solid black; padding: 5%; margin: 10px 0; background-color: antiquewhite;}
+            .quiz h4{width: 500px; background-color: dodgerblue; color: #000; padding: 10px 0;}
+            .quiz button{width: 100%; padding: 10px; font-size: larger; background-color: rgb(204, 19, 19); color: #fff;}
+            .quiz div>p{width: 100px; height: 30px; font-size: 20px; margin: 0 0 0 10px;}
+            .quiz div{display: flex;}
+            .quiz .sub{margin: 10px 0;background-color: #aaa; color: black;}
+            .quiz .result{font-size: larger; }
+        </style>
+    </article>
+</body>
+</html>
