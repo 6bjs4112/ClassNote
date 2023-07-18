@@ -43,7 +43,6 @@ $.ajax({
             e.preventDefault();
             $('.poptrox-overlay').hide();//팝업 숨기기
         })
-
         //next prev 버튼만들때 필요한거?
         let idx = $(this).index();
         console.log(idx);
