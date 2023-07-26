@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>캔버스-메모</title>
+</head>
+<body>
+    <input type="color" id="elColor">
+    <select id="elLineSize">
+        <option>5</option>
+        <option>10</option>
+        <option>25</option>
+        <option>250</option>
+    </select>
+    <button id="remove">지우기</button>
+    <a href="#" download="canvas-test.png" id="save">저장</a>
+    
+    <canvas id="canvasId" width="500" height="500"></canvas>
+    <style>
+        canvas{ 
+            border: 1px solid navy;
+            margin: 0 auto;
+            display: block;
+        }
+    </style>
+    <script>
+        // ~~~~그림 그리기~~~~
+        let ctx = canvasId.getContext('2d');
+        let cSize = {w:canvasId.width, h:canvasId.height};
+        //~~~~~~색깔/선굵기 바꾸기~~~~~~~~~
+        let lineColor = elColor.value;
+        let lineSize = elLineSize.value;
+
+        elColor.addEventListener('change',function(){
+            console.log(this.value);//색 코드가 뜸
+            lineColor = this.value;
+        })
+        elLineSize.addEventListener('change',function(){
+            lineSize = this.value; 
+        })
+
+        //~~~~지우기 버튼~~~ 
+        remove.addEventListener('click',function(){
+            ctx.clearRect(0,0, 500,500)
+        })
+        //~~~~~저장버튼~~~~~~
+        save.addEventListener('click',function(){
+            this.href = canvasId.toDataURL();
+        })
+
+        let status = false;
+        canvasId.addEventListener('mousedown',function(){
+            console.log('마우스 다운');//마우스 누를 때
+            status = true;
+            ctx.beginPath();
+        })
+        canvasId.addEventListener('mouseup',function(){
+            console.log('마우스 업');//마우스에서 뗄 때
+            status = false;
+        })
+        canvasId.addEventListener('mousemove', drawMove )
+        //그림그리는 함수
+        function drawMove(e){
+            // console.log(e.offsetX);//마우스 커서의 위치
+            if(status===true){
+                ctx.lineWidth = lineSize;
+                ctx.strokeStyle = lineColor;
+                ctx.lineTo(e.offsetX,e.offsetY);
+                ctx.stroke();
+            }
+        }
+
+        
+        
+
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>캔버스</title>
+</head>
+<body>
+    <!-- canvas.html -->
+    <canvas width="1000" height="900">
+        캔버스가 호환되지않습니다. 다른 브라우저를 이용하세요~~~...
+    </canvas>
+    <script>
+        const canvas = document.querySelector('canvas'),
+            ctx = canvas.getContext('2d');
+
+            ctx.fillRect(100,50,200,200);
+            ctx.strokeRect(100,300,200,200);
+
+            
+        //arc 원호
+            ctx.lineWidth = 15;//선의 굵기 지정
+            ctx.lineCap = 'round'//라인의 끝 모양
+            ctx.strokeStyle = 'teal';//선 색 지정
+            ctx.fillStyle ='red';//면 색 지정
+
+            ctx.arc(200, 650, 100, 0, Math.PI, true);             
+            ctx.fill();//채우기
+            ctx.stroke();//외곽선
+
+            
+        //선 긋기
+            ctx.beginPath();//선 시작~
+            // ctx.lineTo(x,y);//x좌표와 y좌표 사이에 선을 긋겟다
+            ctx.strokeStyle = 'pink';//선 색 지정
+                ctx.lineTo(350,100);
+                ctx.lineTo(500,100);
+                ctx.stroke();
+            ctx.closePath(); //선 끝~
+
+
+         //이미지
+            // const newImg = document.createElement();//이미지는 생성자 함수가 있어서 이렇게 안해도 된대
+            const newImg = new Image();
+                newImg.src='./img/03.jpg';
+
+
+                newImg.addEventListener('load', ()=>{//화살표함수
+                    ctx.drawImage(newImg, 350,300, 200,200);//이미지, 위치지정350, 사이즈 지정200x200
+                    ctx.drawImage(newImg, 350,300, 200,200,   600,300, 400,300);
+                    //이미지, 원래사진에서 잘라낼 위치, 오리는 장소, 붙여넣을 크기
+                })
+
+        //비디오
+        const newVideo = document.createElement('video');
+            newVideo.src='./img/puppies.mp4';
+            //비디오를 auto play하려면 음소거 되어야함
+            newVideo.muted ='muted';//음소거
+            newVideo.play();//재생
+            
+            newVideo.addEventListener('loadedmetadata',()=>{
+                //메타 데이터 - 재생시간 정보 확인
+                console.log('loadedmetadata...')
+            })
+            newVideo.addEventListener('loadeddata',()=>{
+                //동영상 재생시 조금이라도 준비가 되면 발생
+                console.log('loadeddata...')
+            })
+            newVideo.addEventListener('canplay',(e)=>{
+                //동영상 재생시 발생
+                console.log('canplay...')
+            })
+            newVideo.addEventListener('canplaythrough',(e)=>{
+                //동영상 전체가 끊김없이 재생할 수 있을 때 발생
+                console.log('canplaythrough...',e)
+                ctx.drawImage(newVideo, 600,50, 300,200);//한번그리고땡임. 안움직임
+                videoDraw();
+            })
+
+            let aaa;
+            function videoDraw(){
+                console.log(newVideo.ended);
+                ctx.drawImage(newVideo, 600,50, 300,200);
+
+                if(!newVideo.ended){
+                    aaa = requestAnimationFrame(videoDraw);
+                }else{
+                    cancelAnimationFrame(aaa);
+                }
+            }
+
+        //원이 그려진답니다 함수에 넣기?
+        let num=0;
+        // let cNum1=0;
+        // let cNum2=0;
+        // let cNum3=0;
+        function skill(){
+            num++;
+            //지우기
+            // ctx.clearRect(0,0, 1000,900);
+            //이전에 그린거 지우기. 원 깨지지 않아 보이게. 근데 다른 애들 다 없어짐
+
+            ctx.beginPath();
+            ctx.strokeStyle='red';
+            // ctx.strokeStyle=`rgb(${cNum1}, ${cNum2}, ${cNum3})`;
+            ctx.arc(700, 750, 100, 0, (Math.PI*2)* num/100, false);
+            ctx.stroke();
+            requestAnimationFrame(skill);
+            if(num==100){
+                requestAnimationFrame(skill);
+            }
+            // if(num==100){
+            //     cNum1+=50; num=0;
+            //     if(cNum1>=255){
+            //         cNum2+=50; cNum1=0;
+            //         if(cNum2>=255){
+            //             cNum3+=50; cNum1=0; cNum2=0;
+            //         }
+            //     }
+            // }
+        }
+        skill();
+
+        function sss(){
+            this.width = 20;
+            this.color = 'red';
+            this.x = 500;
+            this.y = 500;
+            this.size = [200,200];
+            this.draw = function(){
+                return 'draw';
+            }
+        }
+
+        let obj = new sss();
+        console.log(obj.size);
+
+
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>캔버스-애니메이션</title>
+</head>
+<body>
+    <canvas id="canvasId" width="500" height="500"></canvas>
+    <style>
+        canvas{
+            border: 1px solid navy;
+            /* width: 1000px; height: 1000px; */
+        
+        }
+    </style>
+    <script>
+        let ctx = canvasId.getContext('2d');
+        console.log(ctx);//명령어 띄우기?
+
+        let cSize = {w:canvasId.width, h:canvasId.height}//canvasSize
+
+        function ranNum(n){
+            return Math.ceil( Math.random() *n  )
+        }
+
+        function CreateItem(n){
+            this.x = ranNum(cSize.w),
+            this.y = ranNum(cSize.h),
+            this.dx = ranNum(10),
+            this.w = n,
+            this.h = n,
+            this.c = `rgb(${ranNum(255)},${ranNum(255)},${ranNum(255)}`,
+            this.draw = function(){
+                ctx.beginPath();//안그러면 다 이어져서 나옴
+                ctx.fillStyle = this.c;
+                ctx.globalAlpha = 0.6;//투명도
+                ctx.arc(this.x, this.y, this.w, this.h, 0 , Math.PI*2);
+                ctx.fill();
+            }
+            //업데이트, 탱탱볼 만들기
+            this.update = function(){
+                this.x += this.dx;
+                if(this.x > cSize.w || this.x <0){
+                    this.dx *= -1;
+                }
+            }
+        };
+        // let item = new CreateItem();
+
+        //원 많이 만들래
+        let itemMany =[];
+
+        for(let i=0; i<50; i++){
+            itemMany.push( new CreateItem(ranNum(100)) );
+        }
+        for(let i=0; i<50; i++){
+            itemMany[i].draw();
+        }
+        function aniDraw(){
+            ctx.clearRect(0,0,cSize.w,cSize.h);//이거없으면 쭉 이어져서 선됨
+            // itemMany[3].update();
+            for(let i=0; i<50; i++){
+                itemMany[i].draw();
+                itemMany[i].update();
+            }
+            requestAnimationFrame(aniDraw)
+        }
+        aniDraw();
+    </script>
+</body>
+</html>
