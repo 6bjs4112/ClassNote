@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>폼-회원가입, 로그인, 글쓰기</title>
+</head>
+<body>
+    <style>
+        article{background-color: #eee; padding: 5%; margin: 5%;}
+    </style>
+    <article>
+        <h2>form활용</h2>
+        <form id="member" action="./class.html">
+            <p><input type="text" name="id" placeholder="id"></p>
+            <p>
+                <input type="password" name="pw"  placeholder="password">
+                <button>패스워드 확인</button>
+            </p>
+            <p><input type="email" name="email" placeholder="email"></p>
+            <p><input type="tel" name="tel" placeholder="xxx-xxxx-xxxx"></p>
+            <p><input type="submit" value="저장"></p>
+        </form>
+    </article>
+
+    <script>
+        const elInput = document.querySelectorAll('input');
+
+        window.addEventListener('submit',function(e){
+            e.preventDefault();
+            let regId = /^(?=.*[!@#$%^&*])(?=.*[0-9])[a-zA-Z0-9!@#$%^&*]{8,15}$/;
+            let regPw = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\p{P}\p{S}]).{8,15}$/;
+            let regEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            let regTel = /^01([0|1|6|7|8|9])-(\d{3,4})-\d{4}$|^02-(\d{3,4})-\d{4}$/;
+
+            // elInput[0].value.toLowerCase()//대소문자 변환 가능
+            // regId.test(elInput[0].value)//조건에 맞지 않을때, false나옴
+            
+            //패스워드 확인 버튼 누르면 text로 보이게 토글버튼
+            // if(e.target.name =='button'){
+            //     elInput[1].type='text';
+            //     return;
+            // }이거안되네
+
+            if(!regId.test(elInput[0].value)){
+                alert('아이디를 다시 입력해 주세요');
+                elInput[0].focus;//
+                return; //이러면 모든 폼이 뒤칸일때 다음 alert안 뜸
+            } if(!regPw.test(elInput[1].value)){
+                alert('패스워드를 다시 입력해 주세요');
+            
+                return;
+            }if(!regEmail.test(elInput[2].value)){
+                alert('이메일을 다시 입력해 주세요');
+                return;
+            }
+            if(!regTel.test(elInput[3].value)){
+                alert('전화번호를 다시 입력해 주세요');
+                return;
+            }else{alert('가입을 축하합니다')}
+
+            member.submit();//모든 조건이 맞으면 action값으로 이동
+        });
+    </script>
+    
+    <article id="article">
+        <h2>약관 체크</h2>
+        <p><input type="checkbox" id="check1">동의1</p>
+        <p><input type="checkbox" id="check2">동의2</p>
+        <p><input type="checkbox" id="checkAll">모두 동의</p>
+    </article>
+    <script>
+        article.addEventListener('click',(e)=>{
+            // console.log(e.target.id)
+            console.log(e.target.checked)//체크값 TF로 확인 가능
+            
+            //모두 동의 누르면 전부 눌리게
+            if(e.target.id=='checkAll'){
+                // check1.checked =true;//이렇게 하면 되는데 All을 2번 체크하면 안빠짐
+                check1.checked =e.target.checked;
+                check2.checked =e.target.checked;//이렇게 하면 해결~
+            }
+
+            //다른거 모두 동의하면 모두동의 눌리게
+            if(check1.checked && check2.checked){
+                checkAll.checked = true;
+            }else{checkAll.checked = false;}
+        })
+    </script>
+
+    <article>
+        <h2>file 이미지 미리보기</h2>
+        <div>
+            <input type="file" id="upload">
+            <img src="#" id="preview">
+        </div>
+    </article>
+    <script>
+        upload.addEventListener('change',function(){
+            // console.log( upload.files[0] )
+
+            if(upload.files[0]){
+                let reader = new FileReader();
+                reader.readAsDataURL(upload.files[0]);
+
+                reader.onload = (e)=>{
+                    // console.log(e);
+                    //콘솔창에 target =>result 보면 이미지의 src를 알 수 있음
+                    // console.log(e.target.result);
+                    preview.src = e.target.result;
+                }
+            }
+            
+        })
+
+    </script>
+
+
+</body>
+</html>

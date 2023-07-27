@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>맵-필터</title>
+</head>
+<body>
+    
+    <script>
+        let data =[
+            {id:0,name:'수박'},
+            {id:1,name:'사과'},
+            {id:2,name:'얼음'},
+        ]
+
+        //사과를 찾자
+        let find = data.filter(obj => obj.name ==='사과');
+        console.log(find);
+
+        //전체 데이터에 num값 추가해주기
+        let addData = data.map((obj,key)=>{
+            obj.num = key;
+            return obj;
+        })
+        console.log(addData);
+
+        let [a, ...all] = data;//복제뜨는것..?
+    
+        all[0].name ='복숭아';
+
+        console.log(data);
+        console.log(a,all,'스프레드 연산자');
+
+
+        console.log('더쉽게해보자')
+        let test = [10, 20, 30];
+        console.log(test);
+            testCopy =[...test];//복사해서 쓰는것
+            console.log(testCopy);
+            testCopy[0] = 10000;//...쓰면 이렇게해도 원본은 안바뀜
+            console.log(testCopy);
+    </script>
+
+</body>
+</html>
