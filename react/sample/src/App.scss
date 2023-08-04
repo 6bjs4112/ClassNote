@@ -1,0 +1,32 @@
+html{
+  font-size: 28px; 
+}
+header{
+  width: 100%; height: 15%;
+}
+header nav{
+  display: flex;
+  justify-content: center; align-items: center;
+}
+header nav a{
+  text-decoration: none; color: black;
+  padding: 0 5%;
+}
+main{
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  .fig_wrap{
+    display: flex; flex-direction: row;flex-wrap: wrap;
+    figure{
+      display: flex; 
+      flex-direction: column; text-align: center;
+      .circle{
+        width: 300px; height: 300px; 
+        border: 2px solid transparent; background-color: dodgerblue;
+        border-radius: 50%; overflow: hidden;
+        img{width: 300px; height: 300px;}
+      }
+    }
+  }
+}
+

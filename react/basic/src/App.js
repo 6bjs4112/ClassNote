@@ -8,9 +8,11 @@ import Not from './page/Not';
 import Router from './page/Router';
 import StateProps from './page/StateProps';
 
+import GitDeploy from './page/GitDeploy';
+
 function App() {//함수인데 첫 문자가 대문자면 컴포넌트로 간주
   return (
-    <BrowserRouter>
+    <BrowserRouter basename='/react-basic'>
       <div className='wrap'>
         <header>
           <nav style={{border: '1px solid red'}}>
@@ -20,6 +22,7 @@ function App() {//함수인데 첫 문자가 대문자면 컴포넌트로 간주
             <Link to="/router" state='a100'> Router(페이지 이동) </Link>
             <Link to="/rr"> not 테스트용 </Link>
             <Link to="/props"> State & Props </Link>
+            <Link to="/gitDeploy"> Github Deploy </Link>
           </nav>  
         </header>
 
@@ -37,6 +40,7 @@ function App() {//함수인데 첫 문자가 대문자면 컴포넌트로 간주
             <Route path='/router' element={<Router/>} />
             <Route path='/*' element={<Not/>} />
             <Route path='/props' element={<StateProps data='1000' name='props' anything='likethis'/>} />
+            <Route path='/gitDeploy' element={<GitDeploy/>} />
           </Routes>
 
         </main>
