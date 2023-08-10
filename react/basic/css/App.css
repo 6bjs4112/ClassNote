@@ -1,0 +1,35 @@
+html {
+  font-size: 24px;
+  line-height: 2;
+}
+
+.wrap {
+  display: flex;
+  justify-content: space-between;
+}
+
+header {
+  width: 15%;
+  height: 100vh;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+header nav a {
+  color: white;
+  display: block;
+  font-size: 0.8rem;
+}
+
+main {
+  width: 80%;
+  height: 100vh;
+  overflow: auto;
+}
+
+button {
+  width: 100px;
+  height: 100px;
+  font-size: larger;
+}/*# sourceMappingURL=App.css.map */
