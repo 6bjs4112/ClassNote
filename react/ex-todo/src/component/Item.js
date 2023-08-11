@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Item({item, todoStatus}) {
+export default function Item({item, todoStatus, deleteData, modifyData}) {
   
   return (
     <>
@@ -11,8 +11,12 @@ export default function Item({item, todoStatus}) {
           <code>{item.todo}</code>
         </div>
         <div>
-          <button>수정</button>
-          <button>삭제</button>
+          <button 
+            disabled={item.state ? true:false}//체크하고나면 수정이 안되게 disable처리
+            onClick={()=>{modifyData(item.date)}}>
+              수정
+          </button>
+          <button onClick={()=>{deleteData(item.date)}}>삭제</button>
         </div>
       </li>
     </>

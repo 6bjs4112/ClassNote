@@ -1,5 +1,11 @@
+@font-face {
+  font-family: 'HakgyoansimWoojuR';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimWoojuR.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
 html{
-  font-size: 20px;
+  font-size: 20px; font-family: 'HakgyoansimWoojuR';
 }
 .App{
   height: 100vh;
@@ -17,10 +23,11 @@ html{
       border-bottom: 3px dashed #000;
       padding-bottom: 10px;
       position: relative;
+      font-family: 'HakgyoansimWoojuR';font-size: 40px;
       span{
         position: absolute;
         right: 0; top: 10px;
-        font-size: .8rem;
+        font-size: 1rem;
       }
     }
     > ul {
@@ -28,7 +35,8 @@ html{
       li{
         padding: 15px 0; border-bottom: 1px dashed #000;
         display: flex; justify-content: space-between;
-        div button{margin: 1px;}
+        div button{margin: 1px;font-family: 'HakgyoansimWoojuR';font-size: larger;}
+        div code{margin-left:5px; font-family: 'HakgyoansimWoojuR';font-size: larger;}
       }
     }
     p input, p button{
@@ -39,10 +47,14 @@ html{
     }
     p button{
       background-color: #000; color: #fff; margin-top: 5px;
+      font-family: 'HakgyoansimWoojuR'; font-size: larger;
     }
   }
 }
 .active{
   color: #aaa;
   text-decoration:line-through;
+}
+input{
+  accent-color:  rgb(255, 90, 50);
 }
