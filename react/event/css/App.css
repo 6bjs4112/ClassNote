@@ -1,0 +1,60 @@
+nav {
+  background-color: dodgerblue;
+  padding: 15px 0;
+  text-align: center;
+}
+nav a {
+  color: white;
+  padding: 0 20px;
+  background-color: dodgerblue;
+  text-decoration: none;
+  font-size: larger;
+  font-weight: 500;
+}
+
+main {
+  width: 50%;
+  margin: 0 auto;
+}
+
+article {
+  margin: 100px 0;
+  padding: 3%;
+  border: 1px solid navy;
+}
+
+.popup {
+  padding: 100px;
+  background-color: rgb(255, 255, 183);
+  display: none;
+  border-radius: 10px;
+}
+
+.popup.active {
+  display: block;
+}
+
+.like {
+  background-color: transparent;
+  padding: 5%;
+}
+
+.like.active {
+  background-color: dodgerblue;
+  color: white;
+}
+
+.scroll figure {
+  background-color: teal;
+  color: white;
+  text-align: center;
+  font-size: x-large;
+  height: 500px;
+  margin: 100px 0;
+  transform: translateX(-150%);
+  transition: 1s;
+}
+
+.scroll figure.active {
+  transform: translateX(0%);
+}/*# sourceMappingURL=App.css.map */

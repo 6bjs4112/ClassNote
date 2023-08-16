@@ -1,0 +1,25 @@
+*{  box-sizing: border-box;}
+html{
+  background-color: rgb(153, 100, 204, 0.8);
+  color: white;
+}
+form{
+  display: flex; flex-direction: column;
+  input, textarea{
+    // width: 250px; height: 40px;
+    width: 100%; padding: 10px;
+    margin: 2% 0; 
+    
+  }
+  textarea{
+    height: 100px;
+  }
+}
+article{
+  width: 50%; margin: 100px auto;
+  padding: 60px; border: 5px solid palegoldenrod;
+  border-radius: 30px;
+}
+li{
+  padding: 15px 0; border-bottom: 2px dashed palegoldenrod;
+}
