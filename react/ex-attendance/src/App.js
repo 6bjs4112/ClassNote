@@ -8,10 +8,7 @@ function App() {
     <>
       <section>
         <MyContext>
-          <Write
-            // key={obj.id} 
-            // deleteData={deleteData}
-          />
+          <Write/>
           <List/>
         </MyContext>
       </section>

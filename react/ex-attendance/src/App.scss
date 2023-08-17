@@ -9,6 +9,7 @@ section{
   border-radius: 30px;
 }
 .newWrite{
+  position: fixed; top: 1%; left:1%;
   .addPeople{
     width: 30px; height: 30px;
     border: 2px solid black;
@@ -34,9 +35,20 @@ section{
 .peopleList{
   border: 2px solid black;
   border-radius: 3px; 
-  
-  li{list-style:decimal;padding: 20px;}
+  li{
+    border-bottom: 1px dashed black;
+    div{
+      display: flex; flex-direction: row;
+      justify-content: flex-end;
+      button{margin: 5px;}
+    }
+  }
 }
+li{list-style:decimal;padding: 20px;}
 .inputForm.active{
   display: block;
 }
+ul button:nth-child(1){ background-color: green; color: white;}
+ul button:nth-child(2){ background-color: red; color: white;}
+article ul li b.active{background-color: red;}
+article ul li span.active{color: red; font-weight: bold;}

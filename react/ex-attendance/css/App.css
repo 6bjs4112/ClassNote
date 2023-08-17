@@ -1,0 +1,61 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: rgba(153, 100, 204, 0.8);
+  color: white;
+}
+
+section {
+  width: 50%;
+  margin: 100px auto;
+  padding: 60px;
+  border: 5px solid palegoldenrod;
+  border-radius: 30px;
+}
+
+.newWrite .addPeople {
+  width: 30px;
+  height: 30px;
+  border: 2px solid black;
+  border-radius: 50px;
+  padding: 3%;
+  background-color: palegoldenrod;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.newWrite .addPeople h2 {
+  color: black;
+  font-size: 25px;
+}
+.newWrite .inputForm {
+  color: black;
+  margin-top: 10px;
+  background-color: palegoldenrod;
+  border-radius: 30px;
+  padding: 5%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  display: none;
+}
+.newWrite .inputForm input, .newWrite .inputForm button {
+  width: 100%;
+  margin: 10px 0;
+  padding: 5%;
+}
+
+.peopleList {
+  border: 2px solid black;
+  border-radius: 3px;
+}
+.peopleList li {
+  list-style: decimal;
+  padding: 20px;
+}
+
+.inputForm.active {
+  display: block;
+}/*# sourceMappingURL=App.css.map */
