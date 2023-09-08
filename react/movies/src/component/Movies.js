@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom';
 
-let clickCount = 1
+let clickCount = 1;
+let searchCount = 0;
 
 export default function Movies() {
     const [movieData, setMovieData] = useState([]);
@@ -17,15 +19,15 @@ export default function Movies() {
         dbData
         .get(`/movie/upcoming?page=1`,'/movie/popular','/movie/top_rated')
         .then(res=>{
-            const movieSer = res.data;
-            setMovieData(movieSer.results);
+            setMovieData(res.data.results);
         })
     },[])
 
     // 검색 기능
     const handleSearch = () => {
+        searchCount+=1;
         dbData
-        .get(`/search/movie?query=${searchQuery}`) // 검색어를 포함하여 API 호출
+        .get(`/search/movie?query=${searchQuery}`)
         .then((res) => {
             const movieSer = res.data;
             setMovieData(movieSer.results);
@@ -36,7 +38,12 @@ export default function Movies() {
                 </li>
             ))
         })
-        
+    };
+    //엔터키 검색
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            handleSearch(); 
+        }
     };
     
     //더보기 버튼 
@@ -53,24 +60,26 @@ export default function Movies() {
     return (
         <>
         <section className='serMov'>
-            <h1>Movies</h1>
+            <h1 style={{marginTop:'100px'}}>Movies</h1>
             <div>
                 <input type='text'placeholder='Enter keyword'
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
+                onKeyDown={handleKeyDown}
                 />
                 <button onClick={handleSearch}>search</button>
             </div>
             <ul>
                 {movieData.map((movie) => (
                 <li key={movie.id}>
-                    <img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}/>
+                    <Link to={`/movie/${movie.id}`}><img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}/></Link>
                     <h2>{movie.title}</h2>
                 </li>
                 ))}
             </ul>
         </section>
-        <div className='load'>
+        {/* 검색 시 더보기 없어지게 */}
+        <div className={`${searchCount===0 ? 'load':'load none'}`}>
             <button className='loadMore' onClick={more}>Load more</button>
         </div>
         </>

@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom';
 
 let clickCount = 1;
+let searchCount = 0;
 
 export default function TvSeries() {
     const [tvData, setTvData] = useState([]);
@@ -16,28 +18,33 @@ export default function TvSeries() {
         dbData
         .get('/tv/top_rated')
         .then(res=>{
-            const tvSer = res.data;
-            console.log(tvSer);
-            setTvData(tvSer.results);
+            setTvData(res.data.results);
         })
     },[])
 
+    // 검색 버튼 클릭 시 호출되는 함수
     const handleSearch = () => {
-        // 검색 버튼 클릭 시 호출되는 함수
         dbData
         .get(`/search/tv?query=${searchQuery}`) // 검색어를 포함하여 API 호출
         .then((res) => {
             const tvSer = res.data;
             setTvData(tvSer.results);
         })
+        searchCount+=1;
     };
-       //더보기 버튼 
+    // 엔터 키를 누르면 검색 실행
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            handleSearch(); 
+        }
+    };
+    //더보기 버튼 
     function more(){
         clickCount+=1;
         dbData.get(`/tv/top_rated?page=${clickCount}`)
         .then((res) => {
             const tvMore = res.data;
-            // console.log(tvMore);
+            console.log(tvMore);
             setTvData([...tvData,...tvMore.results])
         })
     }
@@ -45,24 +52,25 @@ export default function TvSeries() {
     return (
         <>
         <section className='serMov'>
-            <h1>TV Series</h1>
+            <h1 style={{marginTop:'100px'}}>TV Series</h1>
             <div>
                 <input type='text'placeholder='Enter keyword'
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
+                onKeyDown={handleKeyDown}
                 />
                 <button onClick={handleSearch}>search</button>
             </div>
             <ul>
                 {tvData.map((tv) => (
                 <li key={tv.id}>
-                    <img src={`https://image.tmdb.org/t/p/w200${tv.poster_path}`}/>
+                    <Link to={`/tv/${tv.id}`}><img src={`https://image.tmdb.org/t/p/w200${tv.poster_path}`}/></Link>
                     <h2>{tv.name}</h2>
                 </li>
                 ))}
             </ul>
         </section>
-        <div className='load'>
+        <div className={`${searchCount===0 ? 'load':'load none'}`}>
             <button className='loadMore' onClick={more}>Load more</button>
         </div>
         </>

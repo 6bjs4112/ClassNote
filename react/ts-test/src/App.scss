@@ -1,0 +1,36 @@
+*{
+    background-color: rgb(195, 122, 229); 
+    color: white;
+    box-sizing: border-box;
+}
+html{
+    background-image: url('../public/ditto.jpg');}
+.active{
+    color: black;
+    font-size: 5rem;
+}
+header a{
+    padding: 5px 10px;
+    font-size: 30px;
+    border: 2px solid white;
+    border-radius: 25px;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+//write
+article{
+    h2{}
+    div{
+        form{
+            display: flex; flex-direction: column; justify-content: flex-start;
+            textarea{
+                width: 50%; height: 35vh;
+                font-size: x-large;
+                border: 5px solid black;
+            }
+            select,input{width: 50%; font-size: 3rem;color: white;}
+            input{background-color: white; color: black;}
+        }
+    }
+}
