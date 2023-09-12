@@ -1,0 +1,56 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 24px;
+  background-color: rgb(243, 243, 193);
+}
+
+header {
+  background-color: rgb(106, 122, 205);
+  padding: 20px 0;
+  text-align: center;
+}
+header a {
+  color: white;
+  padding: 0 20px;
+}
+
+article {
+  width: 50%;
+  margin: 100px auto;
+}
+article h2 {
+  border-bottom: 2px solid black;
+  padding-bottom: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+li {
+  padding: 15px 0;
+  border-bottom: 1px solid black;
+}
+
+.total {
+  background-color: rgb(95, 67, 57);
+  padding: 50px 0;
+  text-align: center;
+  color: white;
+  font-size: 2rem;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: aliceblue;
+}
+
+textarea {
+  height: 200px;
+}/*# sourceMappingURL=App.css.map */
