@@ -1,0 +1,8 @@
+/* page.module.css
+about.module.css
+work.module.css
+모듈css에선 빈 태그를 쓰면 안됨
+ex) div{  } 안됨. 모든문서의 div가 잡힘
+.txt{ }이런 식으로 잡으면 st.txt{ }
+*/
+.txt{color:red}
