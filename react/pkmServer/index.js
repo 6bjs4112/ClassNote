@@ -59,4 +59,4 @@ app.post('/useCoin',function(req,res){
     res.send(jsonData);
 })
 
-app.listen(3030)
+app.listen(3000)
