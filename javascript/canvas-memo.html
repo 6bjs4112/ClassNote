@@ -15,17 +15,31 @@
         <option>250</option>
     </select>
     <button id="remove">지우기</button>
+    <button id="undo">되돌리기</button>
+
     <a href="#" download="canvas-test.png" id="save">저장</a>
-    
-    <canvas id="canvasId" width="500" height="500"></canvas>
+    <div id="canvasWrapper">
+
+        <canvas id="canvasId" width="500px" height="500px"></canvas>
+    </div>
     <style>
         canvas{ 
-            border: 1px solid navy;
+            width: 100%; 
+            height: 100%;
+            background-color: lightgray;
+            
+            /* border: 1px solid navy; */
             margin: 0 auto;
             display: block;
         }
+        #canvasWrapper {
+            width: 500px; 
+            height: 500px; 
+            clip-path: polygon(7% 0, 93% 0, 100% 9%, 100% 92%, 95% 100%, 5% 100%, 0 93%, 0 8%);            position: relative; 
+        }
     </style>
     <script>
+
         // ~~~~그림 그리기~~~~
         let ctx = canvasId.getContext('2d');
         let cSize = {w:canvasId.width, h:canvasId.height};
@@ -43,7 +57,9 @@
 
         //~~~~지우기 버튼~~~ 
         remove.addEventListener('click',function(){
-            ctx.clearRect(0,0, 500,500)
+            ctx.clearRect(0,0, 500,500);
+            ctx.fillStyle = "#C2C4B9";
+            ctx.fillRect(0,0,cSize.w, cSize.h);
         })
         //~~~~~저장버튼~~~~~~
         save.addEventListener('click',function(){
@@ -59,6 +75,7 @@
         canvasId.addEventListener('mouseup',function(){
             console.log('마우스 업');//마우스에서 뗄 때
             status = false;
+            saveSnapshot();
         })
         canvasId.addEventListener('mousemove', drawMove )
         //그림그리는 함수
@@ -71,9 +88,52 @@
                 ctx.stroke();
             }
         }
+        //~~~~~~배경색 투명방지~~~~~~~~~~~
+        ctx.fillStyle = "#C2C4B9";
+        ctx.fillRect(0,0,cSize.w, cSize.h);
+        
+        //~~~~~~~색 붓기~~~~~~~~~~~
+        // fill.addEventListener('click',function(){
+        //     ctx.fillStyle = lineColor;
+        //     ctx.fillRect(0,0,cSize.w, cSize.h);
+        // })
+        //~~~~~~~되돌리기 5회~~~~~~~~~~
+        let undoBtn = document.getElementById('undo');
+        let undoArray = [];
+        let currentSSIndex = -1;
+        let undoLimit = 5;
 
-        
-        
+        undoBtn.addEventListener('click',onClickUndo);
+
+        function saveSnapshot() {
+        // 현재 캔버스 상태를 스냅샷으로 저장합니다.
+            undoArray.push(canvasId.toDataURL());
+            currentSSIndex = undoArray.length - 1; // 현재 스냅샷 인덱스 업데이트
+            
+            if (undoArray.length > undoLimit) {
+                undoArray.shift();
+                currentSSIndex--;
+            }
+        }
+
+        function onClickUndo(){
+            if (currentSSIndex >= 0){
+                currentSSIndex--;
+                restoreSnapshot();
+            }
+        }
+
+        function restoreSnapshot(){
+        if (currentSSIndex >= 0) {
+            // 현재 스냅샷 인덱스로 캔버스를 복원합니다.
+            let prevImg= new Image();
+            prevImg.src = undoArray[currentSSIndex];
+            prevImg.onload = function () {
+                ctx.clearRect(0, 0, cSize.w, cSize.h);
+                ctx.drawImage(prevImg, 0, 0, cSize.w, cSize.h);
+            };
+        } 
+    }
 
     </script>
     
