@@ -8,6 +8,8 @@ app.use(cors())
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
 
+
+app.use(express.static('dist'));
 // Connection URL
 const url = 'mongodb+srv://Yoonha:gWfFWdqv3TtRUpXK@cluster0.hdeici6.mongodb.net/?retryWrites=true&w=majority';
 const client = new MongoClient(url);
