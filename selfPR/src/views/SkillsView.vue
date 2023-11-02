@@ -1,8 +1,8 @@
 <template>
-  <HomeFrame/>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+    <HomeFrame/>
+    <div class="skills">
+        <h1>This is an skills page</h1>
+    </div>
 </template>
 
 <script>
@@ -11,9 +11,8 @@ export default {
     components: { HomeFrame }
 }
 </script>
-
 <style scoped lang="scss">
-    .about{
+    .skills{
         position: absolute; top: 15%; left: 30%;
     }
 </style>
