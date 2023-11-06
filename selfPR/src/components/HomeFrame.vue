@@ -3,7 +3,7 @@
     <section class="leftProfile">
       <div class="wrapLeft20">
         <figure>
-          <img src="../assets/img/mypic.png" alt="profie_pictire"/>
+          <img src="../../public/assets/img/mypic.png" alt="profie_pictire"/>
         </figure>
         <b class="hello">
           안녕하세요<br>프론트엔드 개발자<br>김윤하입니다.

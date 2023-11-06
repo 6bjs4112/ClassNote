@@ -1,7 +1,7 @@
 <template>
   <section :class="classname">
     <article class="title">
-      <h1>About</h1>
+      <h1 class="titleName darkText">About</h1>
       <div class="decoLine"></div>
     </article>
 
@@ -9,7 +9,7 @@
       <div class="myProfile">
         <div class="infoText">
           <div class="decoLineBlue"></div>
-          <div class="textWrap">
+          <div class="textWrap darkText">
             <h2>김윤하</h2>
             <div class="detail">
               <p>1995.7.6</p>
@@ -19,43 +19,44 @@
           </div>
         </div>
         
-        <div class="contactInfo">
+        <div class="contactInfo darkText">
           <figure class="eachInfo">
-            <img src="../assets/img/email.png"/>
+            <img src="../../public/assets/img/email.png"/>
             <figcaption>tsunenikannsya@gmail.com</figcaption>
           </figure>
           <figure class="eachInfo">
-            <img src="../assets/img/kakao.png"/>
+            <img src="../../public/assets/img/kakao.png"/>
             <figcaption>오픈톡방링크</figcaption>
           </figure>
           <figure class="eachInfo">
-            <img src="../assets/img/tel.png"/>
+            <img src="../../public/assets/img/tel.png"/>
             <figcaption>+8210-3428-2527</figcaption>
           </figure>
         </div>
       </div>
       <div class="introduce">
         <div class="decoLineBlue"></div>
-        <p>예시) 웹표준을 준수하며 시맨틱 마크업을 작성합니다.SASS를 활용하여 컴포넌트화 되고 유지보수에 최적화된 코딩을 지향하며, 각종 jQuery 플러그인을 활용 및 커스터마이징 하여 여러가지 동적 효과를 구현합니다.Gulp로 각종 pre process와 빌드의 자동화를 구현하고 Git으로 소스의 형상관리를 합니다.</p>
+        <p class="introText darkText">예시) 웹표준을 준수하며 시맨틱 마크업을 작성합니다.SASS를 활용하여 컴포넌트화 되고 유지보수에 최적화된 코딩을 지향하며, 각종 jQuery 플러그인을 활용 및 커스터마이징 하여 여러가지 동적 효과를 구현합니다.Gulp로 각종 pre process와 빌드의 자동화를 구현하고 Git으로 소스의 형상관리를 합니다.</p>
       </div>
     </article>
 
     <ul class="myPages">
       <li class="page">
         <figure class="pageInfo">
-          <img src="../assets/img/githubLogo.png" alt="깃허브 로고"/>
-          <figcaption>Github</figcaption>
+          <img class="lightImg" src="../../public/assets/img/githubLogo.png" alt="깃허브 로고"/>
+          <img class="darkImg" src="../../public/assets/img/githubLogoDark.svg" alt="깃허브 로고"/>
+          <figcaption class=" darkText">Github</figcaption>
         </figure>
-        <p class="pageDesc">
+        <p class="pageText darkText">
           매일 공부한 것을 정리해 놓은 블로그입니다. 
         </p>
       </li>
       <li class="page">
         <figure class="pageInfo">
-          <img src="../assets/img/NotionLogo.png" alt="노션 로고"/>
-          <figcaption>Notion</figcaption>
+          <img src="../../public/assets/img/NotionLogo.png" alt="노션 로고"/>
+          <figcaption class=" darkText">Notion</figcaption>
         </figure>
-        <p class="pageText">
+        <p class="pageText darkText">
           매일 공부한 것을 정리해 놓은 블로그입니다. 
         </p>
       </li>
@@ -104,7 +105,7 @@ export default {
   padding: 5%;
 
   .title{
-    h1{
+    .titleName{
         color: #000;
         font-family: ONE Mobile POP;
         font-size: 52px;
@@ -120,9 +121,9 @@ export default {
 
   .aboutMe{
     display: flex; flex-direction: column;
-    margin-top: 50px;
+    margin-top: 75px;
     .myProfile{
-      display: flex; justify-content: center; align-items: center;
+      display: flex; justify-content: flex-start; align-items: center;
       .profilePic{
         width: 225px; height: 240px;
         border-radius: 48px;
@@ -138,7 +139,7 @@ export default {
         display: flex; justify-content: center; align-items: center;
         .textWrap{
           display: flex; justify-content: center; align-items: flex-start; flex-direction: column;
-          margin-left: 10px;
+          margin-left: 20px;
 
           color: #000;
           text-align: left;
@@ -164,6 +165,7 @@ export default {
       .contactInfo{
         display: flex; justify-content: center; align-items: flex-start;
         flex-direction: column;
+        margin-left: 50px;
         .eachInfo{
           display: flex; justify-content: center; align-items: center;
           margin: 5px 0 5px 50px;
@@ -178,14 +180,14 @@ export default {
       }
     }
     .introduce{
-      display: flex; justify-content: center; align-items: center;
-      margin-top: 20px;
+      display: flex; justify-content: flex-start; align-items: center;
+      margin-top: 75px;
       .decoLineBlue{
         width: 27px; height: 125px;
         background:linear-gradient(180deg, #8F94FF 0%, #9AE2FF 100%);
       }
-      p{
-        width: 75%; margin-left: 10px;
+      .introText{
+        width: 75%; margin-left: 20px;
         color: #000;
         font-family: Noto Sans KR;
         font-size: 16px;
@@ -196,16 +198,22 @@ export default {
   }
 
   .myPages{
-    display: flex; justify-content: space-between; align-items: center;
+    display: flex; justify-content: flex-start; align-items: center;
+    margin-top: 75px;
     .page{
+      &:nth-of-type(2){ margin-left: 100px; }
       .pageInfo{
-        display: flex; justify-content: flex-start; align-items: center;
+        display: flex; justify-content: flex-start; align-items: flex-end;
+        margin-bottom: 15px;
         img{width: 47px; height: 47px;}
+        .lightImg{display: block;}
+        .darkImg{display: none;}
         figcaption{
           color: #000;
           text-align: center;
           font-family: ONE Mobile POP;
           font-size: 32px;
+          margin-left: 5px;
         }
       }
       .pageText{

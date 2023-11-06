@@ -35,14 +35,17 @@ export default {
   transition: 0.3s ease-in;
     .hello, .email{color: #FFF;}
     .mainContent{background-color: rgba(120, 120, 120, 0.60);}
-    .title h1{color: #FFF;}
+    .eachInfo:nth-child(2n+1){filter: brightness(10);}
+    .darkText{color: #FFF;}
+    .lightImg{display: none;}
+    .darkImg{display: block;}
   }
 }
 .allBg{
   background: #F4F5FF;
   transition: 0.3s ease-in;
   .allWrap{
-    background-image: url("./assets/img/bgPattern.png");
+    background-image: url("/public/assets/img/bgPattern.png");
     filter: opacity(0.85);
     width: 100%;
     height: 100vh;
