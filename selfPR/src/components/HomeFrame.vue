@@ -54,13 +54,14 @@ export default {
   mounted(){
   //사용자 다크모드 감지
     if(window && window.matchMedia('(prefers-color-scheme: dark)').matches){
-        document.documentElement.classList.add("darkmode")
-    }else document.documentElement.classList.remove("darkmode")
+        document.documentElement.classList.add(".darkmode")
+    }else {
+      document.documentElement.classList.remove(".darkmode")
+    }
   },
 
   methods:{
     //다크모드 토글
-
     toggleDarkMode(){
       this.$emit('parent')
     }

@@ -1,4 +1,3 @@
-
 <template>
   <div :class="['allBg',{darkmode}]">
     <div class="allWrap">
