@@ -30,7 +30,7 @@
                             <a :href="obj.link[0]" class="linkBox" target="_blank">
                                 <span></span>
                                 <img class="iconimg" src="../../public/assets/img/linkImg.png" alt="링크 아이콘">
-                                <p class="iconText">project</p>
+                                <p class="iconText">webpage</p>
                             </a>
                             <a :href="obj.link[1]" class="linkBox" target="_blank">
                                 <span></span>
@@ -134,7 +134,7 @@ export default {
         .wrapLR{
             display: flex; flex-direction: column;
             justify-content: center; align-items: center;
-            margin-top: 50px;
+            margin-bottom: 50px;
             .wrapMain{
                 display: flex; 
                 justify-content: space-between; align-items: center;
@@ -160,7 +160,7 @@ export default {
                         .linkBox{
                             position: relative;
                             z-index: 1;
-                            width: 120px; height: 35px;
+                            width: 120px; height: 40px;
                             background-color: #4E5197;
                             display: flex; justify-content: space-evenly; align-items: center;
                             cursor: pointer;
@@ -275,7 +275,7 @@ export default {
         border: 3px solid transparent;
     }
 }
-.eachImg{width: 100%; height: 100%; object-fit: cover}
+.eachImg{width: 100%; height: 100%; object-fit:cover}
 .swiper-pagination-bullet{
     background-color: #D9D9D9;
     width: 20px;

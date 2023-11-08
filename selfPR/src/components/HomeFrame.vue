@@ -5,10 +5,12 @@
         <figure>
           <img src="../../public/assets/img/mypic.png" alt="profie_pictire"/>
         </figure>
-        <b class="hello">
-          안녕하세요<br>프론트엔드 개발자<br>김윤하입니다.
-        </b>
-        <p class="email">tsunenikannsya@gmail.com</p>
+        <div class="hiText">
+          <b class="hello">
+            안녕하세요<br>프론트엔드 개발자<br>김윤하입니다.
+          </b>
+          <p class="email">tsunenikannsya@gmail.com</p>
+        </div>
       </div>
     </section>
 
@@ -85,13 +87,15 @@ export default {
         background-color: rgb(193, 167, 237,0.6);
       }
     }
-    .hello{
-      font-size: 32px; font-weight: 400;
-      line-height: normal;
-    }
-    .email{
-      font-size: 18px; font-weight: 400;
-      margin-top: 10px;
+    .hiText{
+      .hello{
+        font-size: 32px; font-weight: 700;
+        line-height: normal;
+      }
+      .email{
+        font-size: 18px; font-weight: 500;
+        margin-top: 10px;
+      }
     }
   }
 }
@@ -99,7 +103,7 @@ export default {
   width: 80%;
   position: absolute; top: 10%; right: 5%;
   .wrapRight80{
-    display: flex; 
+    display: flex; flex-direction: row;
     .navTab{
       width: 15%;
       display: flex; flex-direction: column;
@@ -167,4 +171,95 @@ export default {
     }
   }
 }
+
+@media (min-width:820px) and (max-width: 1245px){
+  .leftProfile{
+    width: 100%; height: 20vh;
+    top: 1%; left: 0%;
+    padding: 0 2%;
+    .wrapLeft20{
+      display: flex; justify-content: flex-start; align-items: center;
+      figure{margin-right: 35px; margin-bottom: 0;}
+      .hiText{
+        .hello{font-size: 28px; font-weight: 600;}
+        .email{display: none;}
+      }
+    }
+  }
+  .rightMain{
+    width: 100%; 
+    height: 80vh;
+    top: 7.5%; right: 0%;
+    .wrapRight80{
+      width: 100%;
+      flex-direction: column;
+    .navTab{
+      width: 100%; flex-direction: row; justify-content: flex-end;
+      .toggleBtn{
+        .toggleLabel{
+          transform: rotate(-90deg) translate(65px, 350px);
+        }
+      }
+      .selectTab{
+        flex-direction: row;
+        height: unset;
+        margin-right: 10px;
+        .tabs{
+          height: 75px;
+          border-radius: 25px 25px 0px 0px;
+        }
+      }
+      
+    }
+      .mainContent{width: 100%; height: 75vh;}
+    }
+  }
+}//end 1240
+@media (min-width:590px) and (max-width: 819px){
+  .leftProfile{
+    width: 100%; height: 20vh;
+    top: 1%; left: 0%;
+    padding: 0 2%;
+    .wrapLeft20{
+      display: flex; justify-content: flex-start; align-items: center;
+      figure{
+        margin-right: 35px; margin-bottom: 0;
+        img{width: 140px; height: 140px;}
+      }
+      .hiText{
+        .hello{font-size: 28px; font-weight: 600;}
+        .email{display: none;}
+      }
+    }
+  }
+  .rightMain{
+    width: 100%; 
+    height: 80vh;
+    top: 7.5%; right: 0%;
+    .wrapRight80{
+      width: 100%;
+      flex-direction: column;
+    .navTab{
+      width: 100%; flex-direction: row; justify-content: flex-end;
+      .toggleBtn{
+        .toggleLabel{
+          transform: rotate(-90deg) translate(-35px, -50px);
+        }
+      }
+      .selectTab{
+        flex-direction: row;
+        height: unset;
+        margin-right: 10px;
+        .tabs{
+          height: 75px;
+          border-radius: 25px 25px 0px 0px;
+        }
+      }
+      
+    }
+      .mainContent{width: 100%; height: 75vh;}
+    }
+  }
+}
+@media (min-width:420px) and (max-width: 589px){}
 </style>

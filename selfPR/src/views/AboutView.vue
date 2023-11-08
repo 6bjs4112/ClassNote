@@ -224,4 +224,25 @@ export default {
     }
   }
 }
+@media (min-width:820px) and (max-width: 1245px){
+  .about{
+    .aboutMe{
+      margin-top: 50px;
+      .introduce{margin-top: 50px;}
+    }
+    .myPages{margin-top: 50px;}
+  }
+}
+@media (min-width:590px) and (max-width: 819px){
+  .about{
+    .aboutMe{
+      margin-top: 40px;
+      .introduce{margin-top: 50px;}
+      .myProfile{
+        .contactInfo{margin-left: -10px;}
+      }
+    }
+    .myPages{margin-top: 50px;}
+  }
+}
 </style>

@@ -131,4 +131,32 @@ export default {
         }
     }
 }
+@media (min-width:820px) and (max-width: 1245px){
+    .skills{
+        .imgSkill{
+            margin-top: 10px;
+            .imgWrap{
+                padding: 3%;
+                .eachSkillBg{
+                    width: 105px; height: 105px;
+                    img{width: 85px;}
+                }
+            }
+        }
+    }
+}
+@media (min-width:590px) and (max-width: 819px){
+    .skills{
+        .imgSkill{
+            margin-top: 10px;
+            .imgWrap{
+                padding: 3%;
+                .eachSkillBg{
+                    width: 90px; height: 90px;
+                    img{width: 75px;}
+                }
+            }
+        }
+    }
+}
 </style>
