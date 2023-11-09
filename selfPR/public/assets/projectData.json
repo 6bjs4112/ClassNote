@@ -40,10 +40,18 @@
     {
         "id":3, "name":"포켓몬 퀴즈 배틀", 
         "date":"[2023.09.13~2023.09.27]", 
-        "lang":["React", "JavaScript","SASS","Poké API","express"], 
+        "lang":["React", "JavaScript","SASS","Poké API","Express.js"], 
         "imgs":[
                 "./assets/img/pj_img/pkmq1.png",
-                "./assets/img/pj_img/pkmq4.png"
+                "./assets/img/pj_img/pkmq2.png",
+                "./assets/img/pj_img/pkmq3.png",
+                "./assets/img/pj_img/pkmq4.png",
+                "./assets/img/pj_img/pkmq5.png",
+                "./assets/img/pj_img/pkmq6.png",
+                "./assets/img/pj_img/pkmq7.png",
+                "./assets/img/pj_img/pkmq8.png",
+                "./assets/img/pj_img/pkmq9.png",
+                "./assets/img/pj_img/pkmq10.png"
             ],
         "link":["https://6bjs4112.github.io/3rdPkmQuiz/","https://github.com/6bjs4112/git-project/tree/main/PokemonQuizBattle"],
         "plan":"최근 포켓몬, 복고춤의 유행으로 인해 레트로 감성이 살아남에따라 포켓몬스터와 양대 산맥이였던 디지몬에 대한 즐길거리를 제작하여 유저들의 레트로 감성을 더욱 자극 시키기 위함", 

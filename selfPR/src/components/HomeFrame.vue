@@ -5,7 +5,9 @@
         <figure>
           <img src="../../public/assets/img/mypic.png" alt="profie_pictire"/>
         </figure>
-        <div class="hiText">
+        <div class="hiText"
+        data-aos="fade-right"
+        data-aos-duration="1000">
           <b class="hello">
             안녕하세요<br>프론트엔드 개발자<br>김윤하입니다.
           </b>
@@ -24,13 +26,13 @@
             </span>
           <dl class="selectTab">
             <router-link to="/">
-              <div id="about" class="tabs"><p>About</p></div>
+              <div id="about" class="tabs"><p class="hover">About</p></div>
             </router-link>
             <router-link to="/skills" >
-              <div id="skills" class="tabs"><p>Skills</p></div>
+              <div id="skills" class="tabs"><p class="hover">Skills</p></div>
             </router-link>
             <router-link to="/project">
-              <div id="project" class="tabs"><p>Project</p></div>
+              <div id="project" class="tabs"><p class="hover">Project</p></div>
             </router-link>
           </dl>
         </nav>
@@ -46,11 +48,20 @@
 </template>
 
 <script>
+import AOS from "aos";
+import { onMounted } from "@vue/runtime-core";
+
 export default {
   name: 'HomeFrame',
   props: ['test'],
   data(){
       return { }
+  },
+
+  setup(){
+      onMounted(() => {
+          AOS.init();
+      })
   },
 
   mounted(){
@@ -261,5 +272,54 @@ export default {
     }
   }
 }
-@media (min-width:420px) and (max-width: 589px){}
+@media (min-width:425px) and (max-width: 589px){
+  .leftProfile{
+    width: 100%; height: 20vh;
+    top: 1%; left: 0%;
+    padding: 0 2%;
+    .wrapLeft20{
+      display: flex; justify-content: flex-start; align-items: center;
+      figure{
+        margin-right: 35px; margin-bottom: 0;
+        img{width: 140px; height: 140px;}
+      }
+      .hiText{
+        .hello{font-size: 28px; font-weight: 600;}
+        .email{display: none;}
+      }
+    }
+  }
+  .rightMain{
+    width: 100%; 
+    height: 80vh;
+    top: 7.5%; right: 0%;
+    .wrapRight80{
+      width: 100%;
+      flex-direction: column;
+      .navTab{
+        margin-top: 90px;
+        width: 100%; flex-direction: row; justify-content: flex-end;
+        .toggleBtn{
+          position: absolute; top: 18.5%; right: 12%;
+          z-index: 5;
+          .toggleLabel{
+            transform: rotate(-90deg);
+            
+          }
+        }
+        .selectTab{
+          flex-direction: row;
+          height: unset;
+          margin-right: 10px;
+          .tabs{
+            height: 75px;
+            border-radius: 25px 25px 0px 0px;
+          }
+        }
+        
+      }
+      .mainContent{width: 100%; height: 95vh;}
+    }
+  }
+}
 </style>

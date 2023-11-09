@@ -245,4 +245,21 @@ export default {
     .myPages{margin-top: 50px;}
   }
 }
+@media (min-width:425px) and (max-width: 589px){
+  .about{
+    .aboutMe{
+      margin-top: 40px;
+      .introduce{margin-top: 50px;}
+      .myProfile{
+        flex-direction: column; align-items: flex-start;
+        .contactInfo{ margin-left: -10px; }
+      }
+      .decoLineBlue{height: 190px !important;}
+    }
+    .myPages{
+      margin-top: 50px;
+      .page:nth-of-type(2){ margin-left: 10px; }
+    }
+  }
+}
 </style>

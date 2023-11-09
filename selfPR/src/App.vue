@@ -8,11 +8,12 @@
 
 <script>
 import HomeFrame from './components/HomeFrame.vue';
+
 export default {
   name: 'App',
   components:{HomeFrame},
   data(){
-      return { darkmode: false,}
+      return { darkmode: false}
   },
   methods:{
     modeChange(){
@@ -24,11 +25,16 @@ export default {
 
 <style lang="scss">
 @import "_reset";
-//다크모드 관련
+*{
+  cursor:  url("../public/assets/img/cursor.png"), auto;
+  a:hover, input:hover,  .tabs:hover, .hover:hover{cursor:  url("../public/assets/img/cursor3.png"), auto;}
+}
+
+
 #app{
   width: 100%;
   height: 100vh;
-
+  
   .darkmode{
   background: #1E1E1E;
   transition: 0.3s ease-in;
@@ -51,5 +57,7 @@ export default {
     position: relative;
   }
 }
-
+@media (min-width:425px) and (max-width: 589px){
+  .allBg .allWrap{height: 121vh;}
+}
 </style>

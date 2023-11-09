@@ -9,6 +9,7 @@
             <dl class="wrapLR"
                 v-for="(obj,jsonK) in projectData" :key="jsonK"
             >
+            <!-- projectData.slice().reverse() -->
                 <div class="wrapMain">
                     <div class="leftPic">
                         <ul class="imgSlide">
@@ -30,12 +31,12 @@
                             <a :href="obj.link[0]" class="linkBox" target="_blank">
                                 <span></span>
                                 <img class="iconimg" src="../../public/assets/img/linkImg.png" alt="링크 아이콘">
-                                <p class="iconText">webpage</p>
+                                <p class="iconText hover">webpage</p>
                             </a>
                             <a :href="obj.link[1]" class="linkBox" target="_blank">
                                 <span></span>
                                 <img class="iconimg" src="../../public/assets/img/githubLogoDark.svg" alt="깃허브 아이콘">
-                                <p class="iconText">github</p>
+                                <p class="iconText ">github</p>
                             </a>
                         </ul>
                     </div>
@@ -285,5 +286,28 @@ export default {
 .swiper-pagination-bullet-active{
     background-color: #A7AAFF;
     opacity: 1;
+}
+
+@media (min-width:590px) and (max-width: 819px){
+    .project{
+        .prjData{
+            .wrapMain{
+                flex-direction: column-reverse;
+                .leftPic{width: 100% !important;}
+                .rightTexts{width: 100% !important; margin-bottom: 30px !important;}
+            }
+        }
+    }
+}
+@media (min-width:425px) and (max-width: 589px){
+        .project{
+        .prjData{
+            .wrapMain{
+                flex-direction: column-reverse;
+                .leftPic{width: 100% !important;}
+                .rightTexts{width: 100% !important; margin-bottom: 30px !important;}
+            }
+        }
+    }
 }
 </style>

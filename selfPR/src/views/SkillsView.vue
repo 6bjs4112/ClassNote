@@ -1,5 +1,7 @@
 <template>
-    <section :class="classname">
+    <section 
+        :class="classname" 
+    >
         <article class="title">
             <h1 class="titleName darkText">Skills</h1>
             <div class="decoLine"></div>
@@ -7,7 +9,11 @@
 
         <article class="imgSkill">
             <ul class="imgWrap">
-                <li class="eachSkillBg" v-for="(obj, k) in logoImgdata" :key="k">
+                <li 
+                    class="eachSkillBg button hover-shadow" 
+                    v-for="(obj, k) in logoImgdata" :key="k"
+                    rel="hover-shadow"
+                >
                     <img :src="obj.src" :alt="obj.name">
                 </li>
             </ul>
@@ -31,6 +37,10 @@
 <script>
 import data from "/public/assets/logoImgs.json"
 const logoImgdata = data;
+
+import AOS from "aos";
+import { onMounted } from "@vue/runtime-core";
+
 export default {
 
     data(){
@@ -39,6 +49,12 @@ export default {
             classname:'skills',
             logoImgdata
         }
+    },
+
+    setup(){
+        onMounted(() => {
+            AOS.init();
+        })
     },
 
     mounted(){
@@ -131,6 +147,80 @@ export default {
         }
     }
 }
+/* 
+Hover Shadow 
+https://androphil.tistory.com/557
+*/
+
+@keyframes hover {
+    50% {transform: translateY(-3px);}
+    100% {transform: translateY(-6px);}
+}
+
+@keyframes hover-shadow {
+    0% {
+        transform: translateY(6px);
+        opacity: .4;
+    }
+
+    50% {
+        transform: translateY(3px);
+        opacity: 1;
+    }
+
+
+    100% {
+        transform: translateY(6px);
+        opacity: .4;
+    }
+}
+
+.hover-shadow {
+    display: inline-block;
+    position: relative;
+    transition-duration: 1000;
+    transition-property: transform;
+
+    // @include hideTapHighlightColor();
+    // @include hardwareAccel();
+    // @include improveAntiAlias();
+
+    &:before {
+        pointer-events: none;
+        position: absolute;
+        z-index: -1;
+        content: '';
+        top: 100%;
+        left: 5%;
+        height: 10px;
+        width: 90%;
+        opacity: 0;
+        background: radial-gradient(ellipse at center, rgba(0,0,0,.35) 0%,rgba(0,0,0,0) 80%); /* W3C */
+        transition-duration: 1000;
+        transition-property: transform opacity;
+    }
+
+    &:hover {
+        transform: translateY(-6px);
+        animation-name: hover;
+        animation-duration: 1.5s;
+        animation-delay: 1000;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+
+        &:before {
+        opacity: .4;
+        transform: translateY(6px);
+        animation-name: hover-shadow;
+        animation-duration: 1.5s;
+        animation-delay: .3s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+        }
+    }
+}
 @media (min-width:820px) and (max-width: 1245px){
     .skills{
         .imgSkill{
@@ -156,6 +246,24 @@ export default {
                     img{width: 75px;}
                 }
             }
+        }
+    }
+}
+@media (min-width:425px) and (max-width: 589px){
+    .skills{
+        .imgSkill{
+            margin-top: 50px;
+            .imgWrap{
+                padding: 3%; justify-content: center;
+                .eachSkillBg{
+                    width: 90px; height: 90px;
+                    img{width: 75px;}
+                }
+            }
+        }
+        .skillText{
+            margin-top: 90px;
+            .textWrap .bigText{font-size: 35px;}
         }
     }
 }
