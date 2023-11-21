@@ -14,7 +14,7 @@
             <div class="detail">
               <p>1995.7.6</p>
               <p>경기도 군포시 수리동</p>
-              <p>tsunenikannsya@gmail.com</p>
+              <!-- <p>tsunenikannsya@gmail.com</p> -->
             </div>
           </div>
         </div>
@@ -26,7 +26,7 @@
           </figure>
           <figure class="eachInfo">
             <img src="../../public/assets/img/kakao.png"/>
-            <figcaption>오픈톡방링크</figcaption>
+            <figcaption><a href="https://open.kakao.com/o/sU1pIyTf" target="blank">https://open.kakao.com/o/sU1pIyTf</a></figcaption>
           </figure>
           <figure class="eachInfo">
             <img src="../../public/assets/img/tel.png"/>
@@ -42,23 +42,27 @@
 
     <ul class="myPages">
       <li class="page">
-        <figure class="pageInfo">
-          <img class="lightImg" src="../../public/assets/img/githubLogo.png" alt="깃허브 로고"/>
-          <img class="darkImg" src="../../public/assets/img/githubLogoDark.svg" alt="깃허브 로고"/>
-          <figcaption class=" darkText">Github</figcaption>
-        </figure>
-        <p class="pageText darkText">
-          매일 공부한 것을 정리해 놓은 블로그입니다. 
-        </p>
+        <a href="https://github.com/6bjs4112" target="blank">
+          <figure class="pageInfo hover">
+            <img class="lightImg hover" src="../../public/assets/img/githubLogo.png" alt="깃허브 로고"/>
+            <img class="darkImg hover" src="../../public/assets/img/githubLogoDark.svg" alt="깃허브 로고"/>
+            <figcaption class=" darkText hover">Github</figcaption>
+          </figure>
+          <p class="pageText darkText hover">
+            매일 공부한 것을 정리해 놓은 블로그입니다. 
+          </p>
+        </a>
       </li>
       <li class="page">
-        <figure class="pageInfo">
-          <img src="../../public/assets/img/NotionLogo.png" alt="노션 로고"/>
-          <figcaption class=" darkText">Notion</figcaption>
-        </figure>
-        <p class="pageText darkText">
-          매일 공부한 것을 정리해 놓은 블로그입니다. 
-        </p>
+        <a href="https://www.notion.so/e9588c404e7441df895afc909142d135?v=3a09f38d4d7144fe8e58bc35e3e8943d&pvs=4" target="blank">
+          <figure class="pageInfo hover">
+            <img class=" hover" src="../../public/assets/img/NotionLogo.png" alt="노션 로고"/>
+            <figcaption class=" darkText hover">Notion</figcaption>
+          </figure>
+          <p class="pageText darkText hover">
+            매일 공부한 것을 정리해 놓은 블로그입니다. 
+          </p>
+        </a>
       </li>
     </ul>
   </section>

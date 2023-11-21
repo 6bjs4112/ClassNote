@@ -13,12 +13,30 @@ export default {
   name: 'App',
   components:{HomeFrame},
   data(){
-      return { darkmode: false}
+      return {darkmode: false}
   },
   methods:{
     modeChange(){
       this.darkmode = !this.darkmode;
     }
+  },
+  mounted(){
+  //사용자 다크모드 감지
+  const elAllbg = document.querySelector('.allBg');
+  const darkBtn = document.querySelector('.darkBtn');
+
+    if(window && window.matchMedia('(prefers-color-scheme: dark)').matches){
+      elAllbg.classList.add("darkmode");
+      darkBtn.checked=true;
+    }else {
+      elAllbg.classList.remove("darkmode")
+      darkBtn.checked=false;
+    }
+  
+  darkBtn.addEventListener('change',()=>{
+    if (darkBtn.checked) { elAllbg.classList.add("darkmode");} 
+    else { elAllbg.classList.remove("darkmode"); }
+    })
   }
 }
 </script>
@@ -27,7 +45,7 @@ export default {
 @import "_reset";
 *{
   cursor:  url("../public/assets/img/cursor.png"), auto;
-  a:hover, input:hover,  .tabs:hover, .hover:hover{cursor:  url("../public/assets/img/cursor3.png"), auto;}
+  a:hover, input:hover,  .tabs:hover, .hover:hover{cursor:  url("../public/assets/img/cursor2.png"), auto;}
 }
 
 

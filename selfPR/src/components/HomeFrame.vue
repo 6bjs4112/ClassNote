@@ -21,7 +21,7 @@
           <nav class="navTab">
             <span class="toggleBtn">
               <label for="toggle" class="toggleLabel" >
-                <input type="checkbox"  @click="toggleDarkMode"/>
+                <input class="darkBtn" type="checkbox"  @click="toggleDarkMode"/>
               </label>
             </span>
           <dl class="selectTab">
@@ -62,15 +62,6 @@ export default {
       onMounted(() => {
           AOS.init();
       })
-  },
-
-  mounted(){
-  //사용자 다크모드 감지
-    if(window && window.matchMedia('(prefers-color-scheme: dark)').matches){
-        document.documentElement.classList.add(".darkmode")
-    }else {
-      document.documentElement.classList.remove(".darkmode")
-    }
   },
 
   methods:{

@@ -35,8 +35,8 @@
                             </a>
                             <a :href="obj.link[1]" class="linkBox" target="_blank">
                                 <span></span>
-                                <img class="iconimg" src="../../public/assets/img/githubLogoDark.svg" alt="깃허브 아이콘">
-                                <p class="iconText ">github</p>
+                                <img class="iconimg hover" src="../../public/assets/img/githubLogoDark.svg" alt="깃허브 아이콘">
+                                <p class="iconText hover">github</p>
                             </a>
                         </ul>
                     </div>
