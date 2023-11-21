@@ -49,7 +49,7 @@
             <figcaption class=" darkText hover">Github</figcaption>
           </figure>
           <p class="pageText darkText hover">
-            매일 공부한 것을 정리해 놓은 블로그입니다. 
+            지금까지 제작한 모든 웹사이트의 소스를 볼 수 있는 저장소 
           </p>
         </a>
       </li>
@@ -60,7 +60,7 @@
             <figcaption class=" darkText hover">Notion</figcaption>
           </figure>
           <p class="pageText darkText hover">
-            매일 공부한 것을 정리해 놓은 블로그입니다. 
+            매일 공부한 것을 정리해 놓은 블로그입니다<br> 하루하루 배운 것을 정리하며 복습했던 흔적
           </p>
         </a>
       </li>

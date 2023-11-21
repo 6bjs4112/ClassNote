@@ -44,9 +44,9 @@
                         <h3 class="prjTitle darkText">{{ obj.name }}</h3>
                         <p class="prjDate darkText">{{ obj.date }}</p>
                         <b class="guideText">Planning the road</b>
-                        <p class="prjPlan darkText">{{ obj.plan }}</p>
+                        <p class="prjPlan darkText" v-html="obj.plan"></p>
                         <b class="guideText">Description</b>
-                        <p class="prjDesc darkText">{{ obj.desc }}</p>
+                        <p class="prjDesc darkText" v-html="obj.desc"></p>
                         <b class="guideText">Make Language</b>
                         <div class="wrapLang">
                             <div class="prjLang"
