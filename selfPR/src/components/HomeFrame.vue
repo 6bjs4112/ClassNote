@@ -75,16 +75,12 @@ export default {
 
 <style scoped lang="scss">
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;600;700;800;900&display=swap');
-@font-face {
-    font-family: 'ONE-Mobile-POP';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-POP.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
+
+
 .leftProfile{
   width: 20%;
   position: absolute; top: 10%; left: 5%;
-  font-family: Noto Sans KR;
+  font-family: 'Noto Sans KR';
   .wrapLeft20{
     figure{
       margin-bottom: 35px;
@@ -117,7 +113,7 @@ export default {
       justify-content: space-between; align-items: flex-end;
       .toggleBtn{img{width: 65px;}}
       .selectTab{
-        font-family: ONE Mobile POP;
+        font-family: 'ONE-Mobile-POP';
         display: flex; flex-direction: column;
         justify-content: space-between; align-items: flex-end;
         height: 400px;
@@ -310,6 +306,59 @@ export default {
           .tabs{
             height: 75px;
             border-radius: 25px 25px 0px 0px;
+          }
+        }
+        
+      }
+      .mainContent{width: 100%; height: 95vh;}
+    }
+  }
+}
+@media (max-width: 424px){
+  .leftProfile{
+    width: 100%; height: 20vh;
+    top: 1%; left: 0%;
+    padding: 0 2%;
+    .wrapLeft20{
+      display: flex; justify-content: flex-start; align-items: center;
+      figure{
+        margin-right: 35px; margin-bottom: 0;
+        img{width: 140px; height: 140px;}
+      }
+      .hiText{
+        .hello{font-size: 20px; font-weight: 600;}
+        .email{display: none;}
+      }
+    }
+  }
+  .rightMain{
+    width: 100%; 
+    height: 80vh;
+    top: 7.5%; right: 0%;
+    .wrapRight80{
+      width: 100%;
+      flex-direction: column;
+      .navTab{
+        margin-top: 90px;
+        width: 100%; flex-direction: row; justify-content: flex-end;
+        .toggleBtn{
+          position: absolute; top: 18.5%; right: 12%;
+          z-index: 5;
+          .toggleLabel{
+            transform: rotate(-90deg);
+            
+          }
+        }
+        .selectTab{
+          flex-direction: row;
+          height: unset;
+          margin-right: 10px;
+          .tabs{
+            height: 55px;
+            border-radius: 25px 25px 0px 0px;
+          }
+          .colorTab{
+            width: 140px;height: 75px;
           }
         }
         

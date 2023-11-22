@@ -24,10 +24,7 @@
             <div class="textWrap">
                 <h2 class="bigText">What I can do with</h2>
                 <p class="longText darkText">
-                    예시) 웹표준을 준수하며 시맨틱 마크업을 작성합니다.
-                    SASS를 활용하여 컴포넌트화 되고 유지보수에 최적화된 코딩을 지향하며, 
-                    각종 jQuery 플러그인을 활용 및 커스터마이징 하여 여러가지 동적 효과를 구현합니다.
-                    Gulp로 각종 pre process와 빌드의 자동화를 구현하고 Git으로 소스의 형상관리를 합니다.
+                    웹 표준을 준수하여 시멘틱한 마크업을 구현하고 SASS를 활용하여 유지보수 가능하며 동적인 반응형 웹 사이트를 제작합니다. React, Next.js등의 프레임 워크를 이해하고 프로젝트에 활용할 수 있으며 MySQL, MongoDB를 사용해 데이터 관리를 해본 경험이 있습니다.
                 </p>
             </div>
         </article>
@@ -87,7 +84,7 @@ export default {
     .title{
         .titleName{
             color: #000;
-            font-family: ONE Mobile POP;
+            font-family: 'ONE-Mobile-POP';
             font-size: 52px;
             font-weight: 400;
             line-height: normal;
@@ -130,7 +127,7 @@ export default {
             justify-content: space-evenly; align-items: flex-start; 
             margin-left: 20px;
             .bigText{
-                font-family: ONE Mobile POP;
+                font-family: 'ONE-Mobile-POP';
                 font-size: 40px; font-weight: 400;
                 background: linear-gradient(270deg, #9AE2FF 50%, #7B81FE 100%);
                 background-clip: text;
@@ -140,9 +137,9 @@ export default {
             .longText{
                 margin-top: 5px;
                 color: #000;
-                font-family: Noto Sans KR;
+                font-family: 'Noto Sans KR';
                 font-size: 16px;
-                line-height: normal;
+                line-height: 175%;
             }
         }
     }
@@ -264,6 +261,30 @@ https://androphil.tistory.com/557
         .skillText{
             margin-top: 90px;
             .textWrap .bigText{font-size: 35px;}
+        }
+    }
+}
+@media (max-width: 424px){
+    .skills{
+        .title{
+            .titleName{font-size: 40px;}
+            .decoLine{width: 150px;}
+        }
+        .imgSkill{
+            margin-top: 50px;
+            .imgWrap{
+                padding: 3%; justify-content: center;
+                .eachSkillBg{
+                    width: 90px; height: 90px;
+                    img{width: 75px;}
+                }
+            }
+        }
+        .skillText{
+            margin-top: 90px;
+            .textWrap .bigText{
+                font-size: 28px; margin-bottom: 10px;
+            }
         }
     }
 }

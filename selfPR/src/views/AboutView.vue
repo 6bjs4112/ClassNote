@@ -13,7 +13,7 @@
             <h2>김윤하</h2>
             <div class="detail">
               <p>1995.7.6</p>
-              <p>경기도 군포시 수리동</p>
+              <p>경기도 군포시</p>
               <!-- <p>tsunenikannsya@gmail.com</p> -->
             </div>
           </div>
@@ -26,7 +26,7 @@
           </figure>
           <figure class="eachInfo">
             <img src="../../public/assets/img/kakao.png"/>
-            <figcaption><a href="https://open.kakao.com/o/sU1pIyTf" target="blank">https://open.kakao.com/o/sU1pIyTf</a></figcaption>
+            <figcaption><a href="https://open.kakao.com/o/sU1pIyTf" target="blank">open.kakao.com/o/sU1pIyTf</a></figcaption>
           </figure>
           <figure class="eachInfo">
             <img src="../../public/assets/img/tel.png"/>
@@ -36,7 +36,9 @@
       </div>
       <div class="introduce">
         <div class="decoLineBlue"></div>
-        <p class="introText darkText">예시) 웹표준을 준수하며 시맨틱 마크업을 작성합니다.SASS를 활용하여 컴포넌트화 되고 유지보수에 최적화된 코딩을 지향하며, 각종 jQuery 플러그인을 활용 및 커스터마이징 하여 여러가지 동적 효과를 구현합니다.Gulp로 각종 pre process와 빌드의 자동화를 구현하고 Git으로 소스의 형상관리를 합니다.</p>
+        <p class="introText darkText">
+          하루하루 성장하며 발전하는 끈기있는 프론트엔드 개발자로 거듭나기 위해 노력합니다.<br>코드 작성에 있어 퀄리티와 효율성에 항상 신경 쓰고, 협업과 소통을 중요시하며, 사용자에게 더 나은 웹 경험을 제공하는 개발자를 목표로 합니다.
+        </p>
       </div>
     </article>
 
@@ -60,7 +62,8 @@
             <figcaption class=" darkText hover">Notion</figcaption>
           </figure>
           <p class="pageText darkText hover">
-            매일 공부한 것을 정리해 놓은 블로그입니다<br> 하루하루 배운 것을 정리하며 복습했던 흔적
+            매일 공부한 것을 정리해 놓은 블로그,
+            하루하루 배운 것을 정리하며 복습했던 흔적
           </p>
         </a>
       </li>
@@ -111,7 +114,7 @@ export default {
   .title{
     .titleName{
         color: #000;
-        font-family: ONE Mobile POP;
+        font-family: 'ONE-Mobile-POP';
         font-size: 52px;
         font-weight: 400;
         line-height: normal;
@@ -150,13 +153,15 @@ export default {
           font-weight: 400;
           line-height: normal;
           h2{
-            font-family: ONE Mobile POP;
+            font-family: 'ONE-Mobile-POP';
             font-size: 60px;
+            font-weight: normal;
+            margin-bottom: 10px;
           }
           .detail{
             margin-top: 10px;
             p{
-              font-family: Noto Sans KR;
+              font-family: 'Noto Sans KR';
               font-size: 16px;
             }
           }
@@ -176,7 +181,7 @@ export default {
 
           img{width: 37px; height: 37px;}
           figcaption{
-            font-family: Noto Sans KR;
+            font-family: 'Noto Sans KR';
             font-size: 16px;
             margin-left: 5px;
           }
@@ -193,10 +198,11 @@ export default {
       .introText{
         width: 75%; margin-left: 20px;
         color: #000;
-        font-family: Noto Sans KR;
+        font-family: 'Noto Sans KR';
         font-size: 16px;
         font-weight: 400;
         line-height: normal;
+        word-break: keep-all;
       }
     }
   }
@@ -215,15 +221,17 @@ export default {
         figcaption{
           color: #000;
           text-align: center;
-          font-family: ONE Mobile POP;
+          font-family: 'ONE-Mobile-POP';
           font-size: 32px;
           margin-left: 5px;
         }
       }
       .pageText{
         color: #000;
-        font-family: Noto Sans KR;
+        font-family: 'Noto Sans KR';
         font-size: 16px;
+        line-height:155%;
+        word-break: keep-all;
       }
     }
   }
@@ -243,6 +251,11 @@ export default {
       margin-top: 40px;
       .introduce{margin-top: 50px;}
       .myProfile{
+        .infoText{
+          .textWrap{
+            h2{font-size: 52px;}
+          }
+        }
         .contactInfo{margin-left: -10px;}
       }
     }
@@ -263,6 +276,33 @@ export default {
     .myPages{
       margin-top: 50px;
       .page:nth-of-type(2){ margin-left: 10px; }
+    }
+  }
+}
+@media (max-width: 424px){
+  .about{
+    .title{
+        .titleName{font-size: 40px;}
+        .decoLine{width: 150px;}
+    }
+    .aboutMe{
+      margin-top: 40px;
+      .introduce{margin-top: 50px;}
+      .myProfile{
+        flex-direction: column; align-items: flex-start;
+        .contactInfo{ margin-left: -10px; }
+      }
+      .decoLineBlue{height: 190px !important;}
+    }
+    .myPages{
+      margin-top: 50px;align-items: flex-start;
+      .page:nth-of-type(2){ margin-left: 10px; }
+      .page {
+        .pageText{word-break: unset;}
+        .pageInfo{
+          figcaption{font-size: 28px;}
+        }
+      }
     }
   }
 }
